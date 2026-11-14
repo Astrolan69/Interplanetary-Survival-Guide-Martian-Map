@@ -2,7 +2,7 @@
 
 ## 0. Guided tour
 
-On the first visit a 13-step tour starts by itself. It covers the globe controls, mission paths, layers and legends, overlays, the map-key symbols, the readout, the mission panel and the header buttons. Use **Next → / ← Back** (or the arrow keys) to move through it, and **Skip tour** or **Esc** to close it. Reopen it anytime with **❓ Tour**, on the globe or in the map header. Add `?notour` to the URL to stop it from starting automatically.
+On the first visit a 14-step tour starts by itself. It covers the globe controls, mission paths, layers and legends, overlays, the map-legend symbols, the readout, the mission panel, picking a single route and the header buttons. Use **Next → / ← Back** (or the arrow keys) to move through it, and **Skip tour** or **Esc** to close it. Reopen it anytime with **❓ Tour**, on the globe or in the map header. Add `?notour` to the URL to stop it from starting automatically.
 
 ## 1. Globe
 
@@ -54,7 +54,7 @@ For each mission:
 2. **Sulfur & concrete resources**: a verdict for the site and every resource, with its distance from the proposed crew lander.
 3. **NASA's planned route** (Curiosity) or the raw-image gallery link (Perseverance).
 4. **What happened**: a timeline. Click an entry to fly to it.
-5. **For astronauts**: the lander zone and sites. Routes give distance, walking time, rover time, climb and steepest grade.
+5. **Astronaut exploration plan**: the lander zone and sites. A **route picker** lists every safest route of the mission. Tap one (or click a dashed blue line on the map) to highlight it, fade the others and zoom to it. Its card gives distance, walking time, rover time, climb, steepest grade and an elevation profile coloured by slope (green <8°, yellow 8–15°, red >15°). **All routes** shows them all again.
 
 ![Spirit, thermal night IR](img/06-spirit-thermal.jpg)
 
