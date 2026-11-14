@@ -52,6 +52,8 @@ Each route reports distance, walking time, rover time, total climb and the steep
 ## Other predicted sites
 
 - **Hazard zones** are the steepest ~500 m patch near the work area (DEM), plus places where a rover really got into trouble: Hidden Valley sand ripples (Curiosity), Troy and Tyrone loose sulfate soil (Spirit).
+  Their outlines are drawn from the data (`tools/v9.py`), not as circles: steep zones are the connected terrain steeper than 15° around the steepest patch (Mount Sharp flank 0.73 km², Jezero rim/delta scarp 2.7 km²); Hidden Valley is the sand-floored valley floor found as a local depression on the HiRISE DEM (~4.3 ha); Troy is the low ground at the foot of Home Plate on the 1 m DEM (~0.2 ha); Tyrone's soft patch is too small to see from orbit, so it is a 30 m zone around Spirit's position.
+- **No-go slopes**: every area steeper than 15° is outlined in red (vector outlines from the DEM slope grid) and filled with red hatching.
 - **Winter power** (Gusev) is the largest walkable north-facing slope near Home Plate (~11°, about 2 ha on the north flank of McCool Hill), found from slope and aspect on the 1 m DEM. This is how Spirit survived winters.
 - **Comms mast** (Gusev) is the Husband Hill summit, the highest point Spirit reached.
 
