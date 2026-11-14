@@ -84,7 +84,7 @@ Every event and resource marker uses the rover's official position on the sol of
 
 ## Rover images
 
-- Curiosity: 14 Mastcam/Navcam raw images from the NASA MSL raw-image archive, at their MMGIS positions.
+- Curiosity: 14 Mastcam/Navcam raw images from the NASA MSL raw-image archive, at their MMGIS positions. On sols 4450, 4633, 4789, 4834 and 5041 the earlier Mastcam frames were grey calibration exposures. They were replaced by full-frame Navcam terrain images from the same sols (NAV_LEFT_B, 1024 × 1024 px, resized to 720 px); `data/pov.json` stores each image ID, its date and a link to the NASA page.
 - Perseverance: 8 raw images (one per event sol) from the Mars 2020 raw-image feed.
 
 ## Credits
