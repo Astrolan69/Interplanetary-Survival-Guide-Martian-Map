@@ -65,6 +65,21 @@ input[type=range]{width:100%;accent-color:var(--mars)}
 .mk{display:grid;place-items:center;border-radius:50%;border:2px solid #0e0c0b;box-shadow:0 2px 8px #000c;font-size:12px;font-weight:700;color:#111}
 .pin{width:24px;height:24px;border-radius:50% 50% 50% 3px;transform:rotate(-45deg);border:2px solid #0e0c0b;box-shadow:0 2px 8px #000c;display:grid;place-items:center}.pin span{transform:rotate(45deg);font-size:11px;font-weight:700;color:#111}
 .lab{background:none;border:none;box-shadow:none;color:#fff;font-weight:700;font-size:12px;text-shadow:0 1px 3px #000,0 0 6px #000}
+/* ---- guided tour ---- */
+#tourHi{position:fixed;z-index:5000;border-radius:10px;box-shadow:0 0 0 3px #ffb347,0 0 0 9999px rgba(5,3,2,.68);pointer-events:none;transition:all .35s ease;display:none}
+#tourCard{position:fixed;z-index:5001;width:min(340px,calc(100vw - 24px));background:#1b1511;border:1px solid #6b4a2c;border-radius:12px;padding:14px 16px 12px;color:var(--ink);box-shadow:0 12px 40px #000c;display:none;font-size:13px;line-height:1.45}
+#tourCard h3{margin:0 0 6px;font-size:15px;color:#ffb347;letter-spacing:0;text-transform:none}
+#tourCard p{margin:0 0 6px;color:var(--dim)}#tourCard p b{color:var(--ink)}
+#tourCard ul{margin:4px 0 6px 16px;padding:0;color:var(--dim)}#tourCard li{margin:2px 0}#tourCard li b{color:var(--ink)}
+#tourCard .tf{display:flex;align-items:center;gap:6px;margin-top:10px}
+#tourCard .tf .n{font:11px var(--mono);color:var(--mute);margin-right:auto}
+#tourCard button{border:1px solid var(--ln);background:#2a2018;color:var(--ink);border-radius:7px;padding:6px 11px;font-size:12px;cursor:pointer}
+#tourCard button.pri{background:#d9692f;border-color:#d9692f;color:#fff;font-weight:600}
+#tourCard button.sk{background:none;border:none;color:var(--mute);padding:6px 4px}
+#tourCard .dots{display:flex;gap:4px;margin-top:8px}#tourCard .dots i{width:6px;height:6px;border-radius:50%;background:#4a3a2c}#tourCard .dots i.on{background:#ffb347}
+.ico-in{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;font-size:9px;font-weight:800;vertical-align:-3px;margin-right:3px}
+#helpBtn{margin-right:6px}
+#introHelp{position:absolute;right:24px;top:58px;background:#17130fcc;border:1px solid var(--ln);color:var(--dim);padding:6px 11px;border-radius:7px;font-size:12px;cursor:pointer;z-index:2}
 #modal{position:fixed;inset:0;background:#000b;z-index:2000;display:none;place-items:center}#modal.on{display:grid}
 #modal .c{width:min(720px,92vw);max-height:84vh;overflow:auto;background:var(--p);border:1px solid var(--ln);border-radius:12px;padding:18px 22px}
 #modal h2{margin:0 0 6px}#modal h4{margin:14px 0 4px;color:var(--mars2);font-size:11px;letter-spacing:.12em;text-transform:uppercase}#modal li{color:var(--dim);margin:3px 0}#modal li b{color:var(--ink)}#modal a{color:var(--mars2)}
@@ -95,6 +110,7 @@ input[type=range]{width:100%;accent-color:var(--mars)}
 <div id="intro"><canvas id="gl"></canvas>
   <div class="ihead"><div class="logo"><i></i>MARTIAN MAP</div><div class="isub">Interplanetary Survival Guide · NASA Space Apps 2026</div></div>
   <div class="ititle">Mars, from orbit to the boot print</div>
+  <button id="introHelp" title="Guided tour">❓ Tour</button>
   <div class="ilayers"><button data-g="vis" class="on">Image</button><button data-g="elev">Elevation</button><button data-g="therm">Thermal</button><button data-g="geol">Geology</button></div>
   <div id="ilabels"></div>
   <div class="ihint"><b>Scroll</b> to zoom toward the cursor · <b>drag</b> to rotate · <b>click a rover</b> to land there<br><span id="ipos">—</span></div>
@@ -111,7 +127,7 @@ input[type=range]{width:100%;accent-color:var(--mars)}
     <button data-v="perseverance">Perseverance<small>Jezero · 2021–today</small></button>
   </nav>
   <div class="sp"></div>
-  <button class="hb" id="globeBtn" style="margin-right:6px">🌐 Globe</button><button class="hb" id="aboutBtn">Data sources</button>
+  <button class="hb" id="globeBtn" style="margin-right:6px">🌐 Globe</button><button class="hb" id="helpBtn" title="Guided tour">❓ Tour</button><button class="hb" id="aboutBtn">Data sources</button>
 </header>
 
 <aside id="left">
@@ -412,6 +428,56 @@ window.APP={map,go,setBase(b){base=b;$('#base').querySelectorAll('button').forEa
   if(bd<Math.max(350e3,altKm*1000*0.6)&&altKm<1500){go(best,{instant:true})}else{go('overview');setTimeout(()=>{const z=Math.max(2.5,Math.min(9,Math.log2(19265/Math.max(altKm,40))));map.setView([lat,lon],z,{animate:false})},200)}}};
 $('#globeBtn').onclick=()=>window.GLOBE&&window.GLOBE.show();
 window.dispatchEvent(new Event('app-ready'));
+})();
+</script>
+
+<div id="tourHi"></div><div id="tourCard"></div>
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+const introOpen=()=>{const i=$('#intro');return i&&!i.classList.contains('hide')};
+const toMap=()=>new Promise(r=>{if(introOpen()){$('#ienter').click();setTimeout(r,1300)}else r()});
+const toGlobe=()=>new Promise(r=>{if(!introOpen()&&window.GLOBE){window.GLOBE.show();setTimeout(r,900)}else r()});
+const view=v=>new Promise(r=>{const cur=document.querySelector('#nav button.on');if(!cur||cur.dataset.v!==v){window.APP.go(v,{instant:true});setTimeout(r,700)}else r()});
+const secOf=sel=>{const e=$(sel);return e?e.closest('.sec'):null};
+const S=[
+ {pre:toGlobe,t:null,h:'Welcome to the Martian Map',b:`<p>An interactive guide to Mars built from <b>real NASA data</b>: three rovers (<b>Curiosity, Spirit, Perseverance</b>), real orbital layers, and a mission goal.</p><p><b>Mission goal:</b> find <b>pure sulfur</b>, <b>sulfates</b> and <b>regolith</b> to make <b>sulfur concrete</b> for a first crewed base.</p><p>This 1-minute tour shows every control. You can reopen it anytime with <b>❓ Tour</b>.</p>`},
+ {pre:toGlobe,t:()=>$('.ilayers'),h:'Choose what the planet shows',b:`<ul><li><b>Image</b>: Viking color mosaic</li><li><b>Elevation</b>: MOLA heights in color</li><li><b>Thermal</b>: THEMIS infrared</li><li><b>Geology</b>: official USGS geologic map</li></ul><p>Your choice carries over to the map.</p>`},
+ {pre:toGlobe,t:()=>{const l=[...document.querySelectorAll('.glab')].find(e=>e.style.display!=='none');return l||$('#intro')},h:'Move around the globe',b:`<ul><li><b>Scroll</b>: zoom toward the cursor (altitude top-right). Below ~300 km the 2D map opens.</li><li><b>Drag</b>: rotate.</li><li><b>Click a rover label</b>: fly down to its landing site.</li></ul>`},
+ {pre:toGlobe,t:()=>$('#ienter'),h:'Open the map',b:`<p>Or just press <b>Open the map →</b>. The tour continues there.</p>`},
+ {pre:async()=>{await toMap();await view('overview')},t:()=>$('#nav'),h:'Pick a mission path',b:`<ul><li><b>Overview</b>: all three sites, distances, the sulfur ranking and my recommendation.</li><li><b>Curiosity</b>: Gale crater, pure sulfur at Gediz Vallis.</li><li><b>Spirit</b>: Gusev crater, sulfate soils, Home Plate.</li><li><b>Perseverance</b>: Jezero delta, Ingenuity.</li></ul><p>Each tab shows the rover's <b>real path</b>.</p>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#base'),h:'Map layer',b:`<p>The same four layers, now at high resolution (HiRISE, 1–7 m/px) at each rover site.</p><p>The <b>legend</b> under the buttons explains colors: <b>Elevation</b> = meters above the Mars datum, <b>Thermal Night IR</b> = bright rock / dark sand, <b>Geology</b> = unit and age.</p>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#opa'),h:'Opacity',b:`<p>Fade the chosen layer to compare it with the image beneath, e.g. elevation over terrain.</p>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>secOf('#oSulf'),h:'Overlays: turn information on and off',b:`<ul><li><b style="color:#ffe14d">Sulfur &amp; concrete</b>: where rovers measured sulfur, sulfates and regolith.</li><li><b>What happened</b>: real path, landing site, numbered events, rover-eye photos (white dots).</li><li><b>Lat / lon grid</b>: coordinates in °E.</li><li><b>For astronauts</b>: my proposed lander, sites and safe routes.</li></ul>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>{const k=[...document.querySelectorAll('#left .sec h3')].find(h=>/Map key/i.test(h.textContent));return k?k.closest('.sec'):null},h:'Legend of the symbols',b:`<ul><li><span class="ico-in" style="background:#ffe14d;color:#3a2d00">S</span><b>pure sulfur</b>: binder, melt and mix</li><li><span class="ico-in" style="background:#ff8c1a;color:#2a1400;font-size:7px">SO₄</span><b>sulfates</b>: sulfur ore</li><li><span class="ico-in" style="background:#c79a6b;color:#2a1a0a">▦</span><b>regolith</b>: concrete aggregate</li><li><b>▼</b> proposed crew lander (300 m zone), <b>★</b> science, <b>💧</b> resources, <b>!</b> hazard</li><li><b style="color:#ff9a62">orange line</b>: real rover path, <b style="color:#5fd6e8">dashed blue</b>: proposed safe route</li></ul>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#map'),h:'Click anything on the map',b:`<p>Every marker opens a card: what was found, on which <b>sol</b> (Mars day), exact coordinates, and the source. Numbered pins are mission events; white dots are real rover photos.</p><p>Drag to pan, scroll or <b>+ / −</b> to zoom.</p>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#readout'),h:'Live readout',b:`<p>Under the cursor: <b>latitude/longitude</b>, <b>elevation</b> in meters and <b>slope</b> (green &lt; 8°, yellow 8–15°, red &gt; 15°: too steep on foot). With Geology on, also the geologic unit.</p>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#panel'),h:'The mission story',b:`<ul><li><b>Sulfur &amp; concrete resources</b>: verdict for the site and distance of each resource from the crew lander.</li><li><b>What happened</b>: the timeline. Click an entry to fly there.</li><li><b>For astronauts</b>: sites with route length, walking time, climb and steepest grade.</li></ul>`},
+ {pre:toMap,t:()=>['#globeBtn','#helpBtn','#aboutBtn'].map(q=>$(q)),h:'Globe, tour and sources',b:`<ul><li><b>🌐 Globe</b>: back to the 3D planet.</li><li><b>❓ Tour</b>: replay this guide.</li><li><b>Data sources</b>: every NASA/USGS dataset and the method behind the predictions.</li></ul><p>That's it. Enjoy exploring Mars!</p>`}
+];
+let i=0,on=false;
+const hi=$('#tourHi'),card=$('#tourCard');
+function place(){if(!on)return;const st=S[i];let el=st.t&&st.t();if(Array.isArray(el)){const rs=el.filter(Boolean).map(e=>e.getBoundingClientRect());const L=Math.min(...rs.map(r=>r.left)),T=Math.min(...rs.map(r=>r.top)),Rr=Math.max(...rs.map(r=>r.right)),B=Math.max(...rs.map(r=>r.bottom));el={getBoundingClientRect:()=>({left:L,top:T,width:Rr-L,height:B-T})}}const vw=innerWidth,vh=innerHeight;
+  if(el){const r=el.getBoundingClientRect();const pad=6;const x=Math.max(4,r.left-pad),y=Math.max(4,r.top-pad),w=Math.min(vw-8,r.width+2*pad),h=Math.min(vh-8,r.height+2*pad);
+    Object.assign(hi.style,{display:'block',left:x+'px',top:y+'px',width:w+'px',height:h+'px'});
+    const cw=card.offsetWidth,ch=card.offsetHeight;let cx,cy;
+    if(x+w+12+cw<vw){cx=x+w+12;cy=y}else if(x-12-cw>0){cx=x-12-cw;cy=y}else if(y+h+12+ch<vh){cx=x;cy=y+h+12}else{cx=x;cy=y-12-ch}
+    if(w>vw*.5&&h>vh*.5){cx=vw/2-cw/2;cy=vh-ch-24}
+    cx=Math.min(Math.max(12,cx),vw-cw-12);cy=Math.min(Math.max(12,cy),vh-ch-12);card.style.left=cx+'px';card.style.top=cy+'px'}
+  else{Object.assign(hi.style,{display:'block',left:vw/2+'px',top:vh/2+'px',width:'0px',height:'0px'});card.style.left=(vw-card.offsetWidth)/2+'px';card.style.top=(vh-card.offsetHeight)/2+'px'}}
+async function show(n){i=n;const st=S[i];card.style.display='block';card.style.opacity='.0';if(st.pre)await st.pre();
+  card.innerHTML=`<h3>${st.h}</h3>${st.b}<div class="dots">${S.map((_,k)=>`<i class="${k===i?'on':''}"></i>`).join('')}</div><div class="tf"><span class="n">${i+1} / ${S.length}</span>${i<S.length-1?'<button class="sk" data-a="x">Skip tour</button>':''}${i>0?'<button data-a="p">← Back</button>':''}<button class="pri" data-a="${i<S.length-1?'n':'x'}">${i<S.length-1?'Next →':'Start exploring'}</button></div>`;
+  card.querySelectorAll('[data-a]').forEach(b=>b.onclick=e=>{e.stopPropagation();const a=b.dataset.a;a==='n'?show(i+1):a==='p'?show(i-1):end()});
+  place();setTimeout(()=>{place();card.style.opacity='1'},380)}
+function start(){on=true;show(0)}
+function end(){on=false;hi.style.display='none';card.style.display='none';try{localStorage.setItem('mm_tour_done','1')}catch(e){}}
+addEventListener('resize',place);
+addEventListener('keydown',e=>{if(!on)return;if(e.key==='Escape')end();else if(e.key==='ArrowRight'&&i<S.length-1)show(i+1);else if(e.key==='ArrowLeft'&&i>0)show(i-1)});
+['#tourCard'].forEach(s=>['wheel','mousedown','pointerdown','click'].forEach(ev=>$(s).addEventListener(ev,e=>e.stopPropagation())));
+$('#helpBtn').onclick=start;$('#introHelp').onclick=e=>{e.stopPropagation();start()};
+window.TOUR={start,end};
+let seen=false;try{seen=localStorage.getItem('mm_tour_done')==='1'}catch(e){}
+if(!seen&&!/[?&]notour/.test(location.search)){const go=()=>{if(window.APP)setTimeout(start,1200);else setTimeout(go,300)};go()}
 })();
 </script>
 </body>

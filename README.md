@@ -15,6 +15,7 @@ An interactive Mars globe and map built from real NASA data. It follows three ro
 
 | | |
 |---|---|
+| **Guided tour** | A 13-step walkthrough starts on the first visit: mission paths, layers, legend symbols, overlays, the readout and the mission panel. It can be replayed with **❓ Tour**. |
 | **3D globe start** | The app opens on a rotating Mars globe (three.js). Scroll zooms toward the cursor, dragging rotates it, and clicking a rover lands on its site. Below ~300 km altitude it switches to the 2D map. |
 | **4 real data layers** | *Image* (Viking MDIM 2.1, HiRISE), *Elevation* (MOLA, HRSC, HiRISE/CTX DEMs, colored by true height with hover readout), *Thermal* (Mars Odyssey THEMIS day/night IR) and *Geology* (USGS SIM 3292 global geologic map, 44 units). |
 | **Real rover paths** | Official traverses: NASA/JPL MMGIS for Curiosity (to sol 5073) and Perseverance (to sol 2022) plus Ingenuity's 72 flights, and the PDS MER Analyst's Notebook for Spirit (sols 1–2209). The paths were checked against official odometry and against orbital imagery ([verification](docs/METHOD.md#verification-of-rover-paths)). |

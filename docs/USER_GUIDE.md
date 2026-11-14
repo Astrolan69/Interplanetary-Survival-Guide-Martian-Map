@@ -1,5 +1,9 @@
 # User guide
 
+## 0. Guided tour
+
+On the first visit a 13-step tour starts by itself. It covers the globe controls, mission paths, layers and legends, overlays, the map-key symbols, the readout, the mission panel and the header buttons. Use **Next → / ← Back** (or the arrow keys) to move through it, and **Skip tour** or **Esc** to close it. Reopen it anytime with **❓ Tour**, on the globe or in the map header. Add `?notour` to the URL to stop it from starting automatically.
+
 ## 1. Globe
 
 ![Globe](img/01-globe.jpg)
