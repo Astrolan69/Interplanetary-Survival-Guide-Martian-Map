@@ -76,6 +76,12 @@ Every event and resource marker uses the rover's official position on the sol of
 | **0.64 ± 0.12 mSv/day** mean dose equivalent rate (galactic cosmic rays) on the surface of Gale crater, ~300 sols, Aug 2012 – Jun 2013; absorbed dose 0.21 ± 0.04 mGy/day | Dose per walk on every route (route card and route panel) | Hassler, D. M. et al. 2014, "Mars' surface radiation environment measured with the Mars Science Laboratory's Curiosity rover", *Science* 343, 1244797, [doi:10.1126/science.1244797](https://doi.org/10.1126/science.1244797) (Curiosity RAD) |
 | 600 mSv career effective-dose limit | Scale only | NASA-STD-3001 Vol. 1, [OCHMO technical brief OCHMO-TB-020](https://www.nasa.gov/wp-content/uploads/2023/03/radiation-protection-technical-brief-ochmo.pdf) |
 
+## EVA limit
+
+| Value | Used for | Source |
+|---|---|---|
+| EVAs of up to 8 h (6 ± 2 h) | EVA budget limit on every route | NASA EVA-EXP-0075, Exploration EVA concept of operations ([NTRS 20200001071](https://ntrs.nasa.gov/api/citations/20200001071/downloads/20200001071.pdf)); NASA EVA technology roadmaps, ICES-2025-61 (Mars EVA suit: "8-hour EVA", [NTRS 20250006297](https://ntrs.nasa.gov/api/citations/20250006297/downloads/ICES-2025-61%20Roadmaps%20Presentation.pdf)) |
+
 ## Rover images
 
 - Curiosity: 14 Mastcam/Navcam raw images from the NASA MSL raw-image archive, at their MMGIS positions.

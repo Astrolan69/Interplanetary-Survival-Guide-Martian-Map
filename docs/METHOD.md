@@ -49,6 +49,18 @@ Routes are least-time paths found with Dijkstra on an 8-connected DEM grid:
 
 Each route reports distance, walking time, rover time, total climb and the steepest terrain slope it crosses.
 
+## EVA budget per route
+
+Each route card shows one EVA (extravehicular activity) as a bar: **walk out + work on site + walk back**.
+
+- **Out** = `walk_h` (least-time walk from the lander). **Back** = `back_h`: the same path walked from the target to the lander with the same speed model. Uphill and downhill swap, so the two times differ: the Gediz Vallis route takes 3 h 14 min up and 2 h 28 min back down.
+- **Work on site** is a planning value the user picks in the route panel: 1, 2, 3 or 4 h (default 2 h).
+- **Limit**: one EVA of about **8 h**. That is NASA's design target for exploration suits (xEMU "supports EVAs of up to 8 hours", NASA EVA-EXP-0075; Mars EVA suit "8-hour EVA", NASA EVA technology roadmaps, ICES 2025).
+- ✓ means the walk fits in one EVA on foot, with the reserve shown. ✗ means it does not, and the card gives the pressurised-rover option instead (8 km/h each way, suit worn only on site).
+- The card also gives the cosmic-ray dose for the whole EVA on foot (see below).
+
+With the default 2 h of work, these routes fit one EVA on foot: Gediz Vallis (7 h 41 min), the sulfate unit, every Spirit route, and the Jezero delta and regolith routes. Bagnold dunes (8 h 45 min) and Ingenuity (11 h 28 min) need the rover.
+
 ## Radiation dose per route
 
 `dose = time outside × 0.64 mSv/day ÷ 24 h`, using the mean galactic-cosmic-ray dose equivalent rate that Curiosity's RAD measured in Gale crater (Hassler et al. 2014, *Science* 343). "Per walk" is the time to walk there **and** back (`walk_h + back_h`).
