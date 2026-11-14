@@ -6,7 +6,7 @@ An interactive Mars globe and map built from real NASA data. It follows three ro
 
 ![Mars globe](docs/img/01-globe.jpg)
 
-> **Live demo:** https://alcodean.github.io/Interplanetary-Survival-Guide-Martian-Map/
+> **Live demo:** https://astrolan69.github.io/Interplanetary-Survival-Guide-Martian-Map/
 > (GitHub Pages; open `index.html` from a local web server if Pages is not enabled yet.)
 
 ---
@@ -51,7 +51,7 @@ Details: [docs/METHOD.md](docs/METHOD.md#sulfur-concrete-resources).
 It is a static site with no build step and no external requests at runtime.
 
 ```bash
-git clone https://github.com/AlCODEan/Interplanetary-Survival-Guide-Martian-Map.git
+git clone https://github.com/Astrolan69/Interplanetary-Survival-Guide-Martian-Map.git
 cd Interplanetary-Survival-Guide-Martian-Map
 python3 -m http.server 8000
 # open http://localhost:8000
