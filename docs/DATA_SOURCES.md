@@ -69,6 +69,13 @@ Every event and resource marker uses the rover's official position on the sol of
 | Observation Mountain (Jezero) | Regolith samples Atmo Mountain and Crosswind Lake, sols 634/639 | NASA sample table; Simon et al. 2025 *PNAS* |
 | Sulfur concrete | 50 % S + 50 % regolith, ≤ 1 mm, > 50 MPa | Wan, Wendner & Cusatis 2016, *Construction and Building Materials* |
 
+## Radiation
+
+| Value | Used for | Source |
+|---|---|---|
+| **0.64 ± 0.12 mSv/day** mean dose equivalent rate (galactic cosmic rays) on the surface of Gale crater, ~300 sols, Aug 2012 – Jun 2013; absorbed dose 0.21 ± 0.04 mGy/day | Dose per walk on every route (route card and route panel) | Hassler, D. M. et al. 2014, "Mars' surface radiation environment measured with the Mars Science Laboratory's Curiosity rover", *Science* 343, 1244797, [doi:10.1126/science.1244797](https://doi.org/10.1126/science.1244797) (Curiosity RAD) |
+| 600 mSv career effective-dose limit | Scale only | NASA-STD-3001 Vol. 1, [OCHMO technical brief OCHMO-TB-020](https://www.nasa.gov/wp-content/uploads/2023/03/radiation-protection-technical-brief-ochmo.pdf) |
+
 ## Rover images
 
 - Curiosity: 14 Mastcam/Navcam raw images from the NASA MSL raw-image archive, at their MMGIS positions.

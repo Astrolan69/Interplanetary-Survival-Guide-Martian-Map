@@ -49,6 +49,15 @@ Routes are least-time paths found with Dijkstra on an 8-connected DEM grid:
 
 Each route reports distance, walking time, rover time, total climb and the steepest terrain slope it crosses.
 
+## Radiation dose per route
+
+`dose = time outside × 0.64 mSv/day ÷ 24 h`, using the mean galactic-cosmic-ray dose equivalent rate that Curiosity's RAD measured in Gale crater (Hassler et al. 2014, *Science* 343). "Per walk" is the time to walk there **and** back (`walk_h + back_h`).
+
+- RAD measured only in Gale; the same rate is used at Gusev and Jezero, whose floors are higher (thinner air above them), so their real dose is probably a little higher.
+- A spacesuit gives almost no shielding against cosmic rays, so the outdoor rate applies to the whole EVA.
+- Solar particle events are not included: a large event adds a short spike, and the crew would shelter in the lander.
+- Example: the 4.1 km Gediz Vallis route (5 h 41 min walking there and back) gives about 0.15 mSv. That is about 0.03 % of NASA's 600 mSv career limit.
+
 ## Other predicted sites
 
 - **Hazard zones** are the steepest ~500 m patch near the work area (DEM), plus places where a rover really got into trouble: Hidden Valley sand ripples (Curiosity), Troy and Tyrone loose sulfate soil (Spirit).

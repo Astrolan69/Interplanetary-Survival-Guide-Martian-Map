@@ -27,6 +27,8 @@ Large binary data was moved out of the browser as gzip + base64 chunks and reass
 | `v3b.py` | Perseverance mission and Ingenuity flights. |
 | `v4.py` | Whole-planet layers and `global_grid.png`. |
 | `geol.py`, `geol2.py` | Rasterise the USGS SIM 3292 polygons (even-odd fill for holes, nearest-neighbour gap fill) into colored layers and unit-index rasters. |
+| `v8.py`, `v9.py` | Current routing: slope-limited (15°) least-time routes, hazard outlines (`hazards.json`). |
+| `v13.py` | Return time for every route (`back_h`: the same path walked from target to lander, same speed model) and the Gale boxwork science stop with its route. Run from the repo root. |
 
 ## 3. Processing notes
 
