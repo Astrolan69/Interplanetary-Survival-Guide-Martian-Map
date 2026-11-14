@@ -93,7 +93,7 @@ input[type=range]{width:100%;accent-color:var(--mars)}
 #intro.drag{cursor:grabbing}#intro.hide{opacity:0;pointer-events:none}
 #gl{position:absolute;inset:0;width:100%;height:100%}
 .ihead{position:absolute;left:24px;top:20px}.isub{color:var(--mute);font:11px var(--mono);margin-top:4px;letter-spacing:.05em}
-.ititle{position:absolute;left:24px;top:76px;font-size:30px;font-weight:700;letter-spacing:-.01em;max-width:420px;line-height:1.15}
+.ititle{position:absolute;left:24px;top:68px;max-width:460px}.ititle .mk1{font-size:44px;font-weight:800;letter-spacing:.14em;line-height:1;background:linear-gradient(90deg,#ffd9b0,#ff8a4c);-webkit-background-clip:text;background-clip:text;color:transparent}.ititle .mk2{margin-top:7px;font-size:14px;color:var(--dim);letter-spacing:.01em}.ititle .mk2 b{color:#ffb347;font-weight:800}
 .ilayers{position:absolute;left:24px;top:170px;display:flex;gap:4px}.ilayers button{background:#17130fcc;border:1px solid var(--ln);color:var(--dim);padding:7px 12px;border-radius:7px;font-weight:600;font-size:12px}.ilayers button.on{border-color:var(--mars);color:var(--ink);background:#2c1c12}
 .ihint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);text-align:center;color:var(--dim);font-size:12.5px;background:#0e0c0bcc;border:1px solid var(--ln);border-radius:10px;padding:9px 16px}.ihint b{color:var(--ink)}#ipos{font:11.5px var(--mono);color:var(--cy)}
 .ienter{position:absolute;right:24px;bottom:26px;background:var(--mars);color:#1b0c04;border:none;border-radius:9px;padding:11px 18px;font-weight:700;font-size:13px}
@@ -109,7 +109,7 @@ input[type=range]{width:100%;accent-color:var(--mars)}
 <body>
 <div id="intro"><canvas id="gl"></canvas>
   <div class="ihead"><div class="logo"><i></i>MARTIAN MAP</div><div class="isub">Interplanetary Survival Guide · NASA Space Apps 2026</div></div>
-  <div class="ititle">Mars, from orbit to the boot print</div>
+  <div class="ititle"><div class="mk1">MAREK</div><div class="mk2"><b>M</b>ars <b>A</b>tlas of <b>R</b>esources, <b>E</b>xploration &amp; <b>K</b>nowledge</div></div>
   <button id="introHelp" title="Guided tour">❓ Tour</button>
   <div class="ilayers"><button data-g="vis" class="on">Image</button><button data-g="elev">Elevation</button><button data-g="therm">Thermal</button><button data-g="geol">Geology</button></div>
   <div id="ilabels"></div>
@@ -441,7 +441,7 @@ const toGlobe=()=>new Promise(r=>{if(!introOpen()&&window.GLOBE){window.GLOBE.sh
 const view=v=>new Promise(r=>{const cur=document.querySelector('#nav button.on');if(!cur||cur.dataset.v!==v){window.APP.go(v,{instant:true});setTimeout(r,700)}else r()});
 const secOf=sel=>{const e=$(sel);return e?e.closest('.sec'):null};
 const S=[
- {pre:toGlobe,t:null,h:'Welcome to the Martian Map',b:`<p>An interactive guide to Mars built from <b>real NASA data</b>: three rovers (<b>Curiosity, Spirit, Perseverance</b>), real orbital layers, and a mission goal.</p><p><b>Mission goal:</b> find <b>pure sulfur</b>, <b>sulfates</b> and <b>regolith</b> to make <b>sulfur concrete</b> for a first crewed base.</p><p>This 1-minute tour shows every control. You can reopen it anytime with <b>❓ Tour</b>.</p>`},
+ {pre:toGlobe,t:null,h:'Welcome to MAREK',b:`<p><b>MAREK</b> (<b>M</b>ars <b>A</b>tlas of <b>R</b>esources, <b>E</b>xploration &amp; <b>K</b>nowledge) is an interactive guide to Mars built from <b>real NASA data</b>: three rovers (<b>Curiosity, Spirit, Perseverance</b>), real orbital layers, and a mission goal.</p><p><b>Mission goal:</b> find <b>pure sulfur</b>, <b>sulfates</b> and <b>regolith</b> to make <b>sulfur concrete</b> for a first crewed base.</p><p>This 1-minute tour shows every control. You can reopen it anytime with <b>❓ Tour</b>.</p>`},
  {pre:toGlobe,t:()=>$('.ilayers'),h:'Choose what the planet shows',b:`<ul><li><b>Image</b>: Viking color mosaic</li><li><b>Elevation</b>: MOLA heights in color</li><li><b>Thermal</b>: THEMIS infrared</li><li><b>Geology</b>: official USGS geologic map</li></ul><p>Your choice carries over to the map.</p>`},
  {pre:toGlobe,t:()=>{const l=[...document.querySelectorAll('.glab')].find(e=>e.style.display!=='none');return l||$('#intro')},h:'Move around the globe',b:`<ul><li><b>Scroll</b>: zoom toward the cursor (altitude top-right). Below ~300 km the 2D map opens.</li><li><b>Drag</b>: rotate.</li><li><b>Click a rover label</b>: fly down to its landing site.</li></ul>`},
  {pre:toGlobe,t:()=>$('#ienter'),h:'Open the map',b:`<p>Or just press <b>Open the map →</b>. The tour continues there.</p>`},
