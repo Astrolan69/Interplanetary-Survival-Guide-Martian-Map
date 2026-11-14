@@ -1,8 +1,8 @@
 # v11: fix black areas in the global THEMIS day/night IR textures used on the globe.
 #  - the night mosaic's overview tiles (zoom 2-3) are empty over 45W-0, 0-90S: rebuilt from zoom-4 tiles
-#    and zoom-5 tiles (THEMIS_NightIR_ControlledMosaics_100m_v2_oct2018, downsampled, brightness-matched) -> g_tnight_fixed.png
-#  - remaining thin orbit-gap streaks near +-60 deg: filled from neighbouring THEMIS pixels (diffusion inpainting)
-#  - poles (|lat| > 65 deg) are outside THEMIS coverage: shown as muted gray Basic (Viking) imagery = no thermal data
+#    and zoom-5/6 tiles (THEMIS_NightIR_ControlledMosaics_100m_v2_oct2018, downsampled, brightness-matched) -> g_tnight_fixed.png
+#  - everything else is authentic THEMIS only: real orbit gaps and the poles (|lat| > 65 deg, outside THEMIS coverage)
+#    stay as no-data (dark background), nothing is interpolated or substituted
 import numpy as np
 from PIL import Image
 from scipy import ndimage
@@ -20,15 +20,12 @@ def inpaint(f,known,it=300):
     idx=ndimage.distance_transform_edt(~known,return_distances=False,return_indices=True); f=f[tuple(idx)].copy()
     for _ in range(it): f2=ndimage.uniform_filter(f,3); f[~known]=f2[~known]
     return f
-ALPHA=np.load(D4+'themis_alpha.npy')   # exact no-data masks from the PNG tiles (zoom 3, plus zoom 4-5 under the empty block)
+ALPHA=np.load(D4+'themis_alpha.npy')   # exact no-data masks from the PNG tiles (zoom 3, plus zoom 4-6 under the empty block)
 for n,src,al in [('tday','g_tday.jpg',ALPHA[1]),('tnight','g_tnight_fixed.png',ALPHA[0])]:
     a=np.array(Image.open(D4+src).convert('L')).astype(float)
     gap=cov&(~al|(a<=3))
-    gap=ndimage.binary_dilation(gap,iterations=1)&cov
     m=cov&~gap
     vals=np.sort(a[m]); t=np.searchsorted(vals,a)/len(vals)
-    t=np.where(gap,inpaint(t,~gap),t)
-    out=ramp(t,INF); out[~cov]=G3[~cov]
-    edge=(np.abs(LAT)>63)&cov; w=((np.abs(LAT)-63)/2)[edge][:,None]; out[edge]=out[edge]*(1-w)+G3[edge]*w
+    out=ramp(t,INF); out[~(cov&~gap)]=(20,16,14)
     Image.fromarray(np.clip(out,0,255).astype(np.uint8)).save(S+f'img/global_{n}.jpg',quality=85)
-    print(n,'filled %.2f%% of the covered area'%(gap.sum()/cov.sum()*100))
+    print(n,'no-data %.2f%% of the covered area'%(gap.sum()/cov.sum()*100))
