@@ -47,6 +47,8 @@ The header tabs switch between:
 
 ![Elevation, Jezero](img/04-perseverance-elevation.jpg)
 
+![Ground layer, overview](img/08-ground.jpg)
+
 ## 4. Right panel: the mission story
 
 For each mission:
@@ -56,6 +58,8 @@ For each mission:
 3. **NASA's planned route** (Curiosity) or the raw-image gallery link (Perseverance).
 4. **NASA mission route**: a timeline. Click an entry to fly to it.
 5. **Astronaut exploration plan**: the lander zone and sites. A **route picker** lists every safest route of the mission. Tap one (or click a dashed blue line on the map) to highlight it, fade the others and zoom to it. Its card gives distance, walking time, rover time, climb, steepest grade and an elevation profile coloured by slope (green <8°, yellow 8–15°, red >15°). **All routes** shows them all again.
+
+![Route picker, Curiosity](img/07-route-picker.jpg)
 
 ![Spirit, thermal night IR](img/06-spirit-thermal.jpg)
 

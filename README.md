@@ -15,12 +15,12 @@ An interactive Mars globe and map built from real NASA data. It follows three ro
 
 | | |
 |---|---|
-| **Guided tour** | A 13-step walkthrough starts on the first visit: mission paths, layers, legend symbols, overlays, the readout and the mission panel. It can be replayed with **❓ Tour**. |
+| **Guided tour** | A 14-step walkthrough starts on the first visit: mission paths, layers, legend symbols, overlays, the readout, the mission panel and picking a single route. It can be replayed with **❓ Tour**. |
 | **3D globe start** | The app opens on a rotating Mars globe (three.js). Scroll zooms toward the cursor, dragging rotates it, and clicking a rover lands on its site. Below ~300 km altitude it switches to the 2D map. |
-| **4 real data layers** | *Image* (Viking MDIM 2.1, HiRISE), *Elevation* (MOLA, HRSC, HiRISE/CTX DEMs, colored by true height with hover readout), *Thermal* (Mars Odyssey THEMIS day/night IR) and *Geology* (USGS SIM 3292 global geologic map, 44 units). |
+| **5 data layers** | *Basic* (Viking MDIM 2.1, HiRISE), *Elevation* (MOLA, HRSC, HiRISE DEMs, colored by true height with contour lines and hover readout), *Thermal* (Mars Odyssey THEMIS day/night IR plus measured rover temperatures), *Geology* (USGS SIM 3292 global geologic map, 44 units, plus orbital water-mineral detections) and *Ground* (walking conditions interpreted from MGS TES thermal inertia). |
 | **Real rover paths** | Official traverses: NASA/JPL MMGIS for Curiosity (to sol 5073) and Perseverance (to sol 2022) plus Ingenuity's 72 flights, and the PDS MER Analyst's Notebook for Spirit (sols 1–2209). The paths were checked against official odometry and against orbital imagery ([verification](docs/METHOD.md#verification-of-rover-paths)). |
 | **Resources layer** (sulfur & concrete) | Pure sulfur (S), sulfates (SO₄) and regolith aggregate (▦), each at the rover's official position on the sol of the measurement, with the finding, its use for sulfur concrete and the source. |
-| **Astronaut exploration plan (predictions)** | For each site: a proposed crew lander zone (slope + roughness + elevation), resource sites, hazard zones and no-go slopes (> 15°), and least-time walking routes that avoid both on the DEM. |
+| **Astronaut exploration plan (predictions)** | For each site: a proposed crew lander zone (slope + roughness + elevation), resource sites, hazard zones outlined from the DEMs, slopes steeper than 25° (Basic layer), and least-time walking routes that never cross terrain steeper than 15°. A route picker highlights any single route with its elevation profile. |
 | **Rover's-eye view** | Real Curiosity and Perseverance raw images taken at the event locations. |
 | **Lat / lon grid & readout** | Planetocentric graticule (°E, 0–360), with coordinates, elevation and slope under the cursor. |
 
