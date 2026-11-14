@@ -10,7 +10,7 @@ On the first visit a 14-step tour starts by itself. It covers the globe controls
 
 - **Scroll** to zoom toward the point under the cursor. The altitude is shown top-right.
 - **Drag** to rotate. The globe rotates slowly on its own until you touch it.
-- **Image / Elevation / Thermal / Geology** buttons change the globe texture. The chosen layer carries over to the map.
+- **Basic / Elevation / Thermal / Geology** buttons change the globe texture. The chosen layer carries over to the map.
 - **Click a rover label** to fly down and open that mission.
 - When you zoom below ~300 km, or click **Open the map →**, the 2D map opens at the point you were looking at.
 - The **🌐 Globe** button in the map header brings the globe back.
@@ -33,7 +33,7 @@ The header tabs switch between:
 ## 3. Left panel: layers
 
 - **Map layer**
-  - **Basic**: Viking color mosaic (overview) and HiRISE at the rover sites (called **Image** on the globe).
+  - **Basic**: Viking color mosaic (overview) and HiRISE at the rover sites.
   - **Elevation**: height above the Mars datum, in meters. The map adds contour lines with height labels and ▲/▼ for the highest and lowest point. The legend gives the area's highest and lowest point, its relief and the contour step.
   - **Thermal**: THEMIS infrared. **Night IR** helps most: bright means rock that holds heat (firm ground) and dark means dust or sand (soft). **Inertia** shows TES thermal inertia, and the readout gives its value and what the ground is likely made of. The legend also shows **real measured temperatures** from Curiosity REMS (with a monthly chart), Perseverance MEDA and Spirit Mini-TES.
   - **Geology**: USGS units. Hover a point for its unit and click it for the description. The first letter of the code gives the age: **N**oachian, **H**esperian, **A**mazonian. Colored dots are **water-formed minerals** detected from orbit (clays, sulfates, chlorides, silica, carbonates); click one for details. The legend lists the minerals measured on the ground by each rover.
