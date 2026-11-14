@@ -42,7 +42,7 @@ The header tabs switch between:
   - **Resources**: S, SO₄ and ▦ markers. Click one for the finding, its use and its source.
   - **NASA mission route**: real paths, landing sites, numbered events and rover-eye images (white dots).
   - **Lat / lon grid**: planetocentric latitude and longitude in °E.
-  - **Astronaut exploration plan**: proposed lander (▼), sites and dashed safe routes.
+  - **Astronaut exploration plan**: proposed lander (▼), sites and dashed safest routes; hazard zones (pink dashed outline: soft soil, sand, cliffs) and no-go slopes in two colors: **amber** 15–25° (27–47 % grade) and **red** > 25° (> 47 % grade).
 
 ![Elevation, Jezero](img/04-perseverance-elevation.jpg)
 
