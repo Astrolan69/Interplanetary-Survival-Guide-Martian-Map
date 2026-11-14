@@ -54,7 +54,7 @@ Elevation values are meters relative to the Mars areoid/datum. Thermal brightnes
 
 Every event and resource marker uses the rover's official position on the sol of that event.
 
-## Sulfur & concrete layer
+## Resources layer (sulfur & concrete)
 
 | Site | Finding | Source |
 |---|---|---|

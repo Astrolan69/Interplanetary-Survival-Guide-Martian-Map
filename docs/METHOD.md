@@ -1,6 +1,6 @@
 # Method
 
-Everything in the **What happened**, **Sulfur & concrete** and data layers comes from NASA, USGS or peer-reviewed data. Everything marked **prediction** (lander zones, routes, site picks and ranking) is this project's own analysis.
+Everything in the **NASA mission route**, **Resources** and data layers comes from NASA, USGS or peer-reviewed data. Everything marked **prediction** (lander zones, routes, site picks and ranking) is this project's own analysis.
 
 ## Sulfur concrete resources
 

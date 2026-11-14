@@ -39,10 +39,10 @@ The header tabs switch between:
   - **Geology**: USGS units. Hover a point for its unit and click it for the description. The first letter of the code gives the age: **N**oachian, **H**esperian, **A**mazonian. Colored dots are **water-formed minerals** detected from orbit (clays, sulfates, chlorides, silica, carbonates); click one for details. The legend lists the minerals measured on the ground by each rover.
 - **Opacity slider**: fades the chosen layer to compare it with the one below.
 - **Overlays**
-  - **Sulfur & concrete**: S, SO₄ and ▦ markers. Click one for the finding, its use and its source.
-  - **What happened**: real paths, landing sites, numbered events and rover-eye images (white dots).
+  - **Resources**: S, SO₄ and ▦ markers. Click one for the finding, its use and its source.
+  - **NASA mission route**: real paths, landing sites, numbered events and rover-eye images (white dots).
   - **Lat / lon grid**: planetocentric latitude and longitude in °E.
-  - **For astronauts**: proposed lander (▼), sites and dashed safe routes.
+  - **Astronaut exploration plan**: proposed lander (▼), sites and dashed safe routes.
 
 ![Elevation, Jezero](img/04-perseverance-elevation.jpg)
 
@@ -51,9 +51,9 @@ The header tabs switch between:
 For each mission:
 
 1. A short description and the real landing coordinates.
-2. **Sulfur & concrete resources**: a verdict for the site and every resource, with its distance from the proposed crew lander.
+2. **Target resources**: a verdict for the site and every resource, with its distance from the crew lander location.
 3. **NASA's planned route** (Curiosity) or the raw-image gallery link (Perseverance).
-4. **What happened**: a timeline. Click an entry to fly to it.
+4. **NASA mission route**: a timeline. Click an entry to fly to it.
 5. **Astronaut exploration plan**: the lander zone and sites. A **route picker** lists every safest route of the mission. Tap one (or click a dashed blue line on the map) to highlight it, fade the others and zoom to it. Its card gives distance, walking time, rover time, climb, steepest grade and an elevation profile coloured by slope (green <8°, yellow 8–15°, red >15°). **All routes** shows them all again.
 
 ![Spirit, thermal night IR](img/06-spirit-thermal.jpg)
