@@ -1,0 +1,32 @@
+import json, math, numpy as np
+from PIL import Image
+from scipy import ndimage
+src=open('tools/v2.py').read(); exec(src[:src.index('# ---------- region')])
+D3='/home/claude/data3/'
+META.update(json.load(open(S+'data/meta.json')))
+BOX.update(north=[70,10,140,52], jezero=[77.215,18.405,77.47,18.515], viking2=[134.255,47.645,134.345,47.700])
+zr=np.load(D3+'reg2_dem.npy').astype(float)
+save_layers('north',zr,BOX['north'],-5500.0,1500.0)
+thermal('north',D3+'reg2_tday.jpg','north_tday'); thermal('north',D3+'reg2_tnight.jpg','north_tnight')
+Image.open(D3+'reg2_vis.jpg').save(S+'img/north_vis.jpg',quality=82)
+zj=np.fromfile(D3+'jez_dem.i16',dtype='<i2').reshape(110,256).astype(float)
+zj=np.array(Image.fromarray(ndimage.gaussian_filter(zj,1.0).astype(np.float32)).resize((768,330),Image.BICUBIC)).astype(float)
+save_layers('jezero',zj,BOX['jezero'])
+Image.open(D3+'jez_vis.jpg').save(S+'img/jezero_vis.jpg',quality=78)
+thermal('jezero',D3+'jez_tday.png','jezero_tday'); thermal('jezero',D3+'jez_tnight.png','jezero_tnight')
+zv=np.fromfile(D3+'vk_dem.i16',dtype='<i2').reshape(55,90).astype(float)
+zv=np.array(Image.fromarray(ndimage.gaussian_filter(zv,1.0).astype(np.float32)).resize((450,275),Image.BICUBIC)).astype(float)
+save_layers('viking2',zv,BOX['viking2'])
+Image.open(D3+'vk_vis.jpg').save(S+'img/viking2_vis.jpg',quality=78)
+thermal('viking2',D3+'vk_tday.png','viking2_tday'); thermal('viking2',D3+'vk_tnight.png','viking2_tnight')
+json.dump(META,open(S+'data/meta.json','w'))
+np.savez(D3+'grids3.npz',zj=zj,zv=zv)
+print({k:(round(META[k]['lo']),round(META[k]['hi']),META[k]['w'],META[k]['h'],META[k]['cell']) for k in ['north','jezero','viking2']})
+# ---- overview (3 missions)
+BOX['overview']=[70,-20,180,52]
+zo=np.load(D3+'ov_dem.npy').astype(float)
+save_layers('overview',zo,BOX['overview'],-5500.0,3000.0)
+thermal('overview',D3+'ov_tday.jpg','overview_tday'); thermal('overview',D3+'ov_tnight.jpg','overview_tnight')
+Image.open(D3+'ov_vis.jpg').save(S+'img/overview_vis.jpg',quality=82)
+for k in ['north','insight','viking2','region']: META.pop(k,None)
+json.dump(META,open(S+'data/meta.json','w'))
