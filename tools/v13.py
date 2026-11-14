@@ -56,9 +56,7 @@ M=json.load(open(S+'data/missions.json')); HZ=json.load(open(S+'data/hazards.jso
 K={'curiosity':'gale','spirit':'spirit','perseverance':'jezero'}
 
 BOX=dict(kind='science',title='Boxwork ridges: groundwater science stop',lat=-4.799847,lon=137.383541,sol=4563,
-  why='Curiosity explored these web-like mineral ridges (1–2 m tall, sandy hollows between them) from mid-2025: ancient groundwater hardened the ridge edges. '
-      'X-ray analysis found clay minerals in a ridge sample and carbonates in a hollow sample, and the area lies in the sulfate-rich layer of Mount Sharp. '
-      'A crew stop here samples the youngest groundwater record in Gale on the way along the sulfate unit.',
+  why='Curiosity explored these web-like mineral ridges (1–2 m tall, with sandy hollows between them) from mid-2025. Ancient groundwater hardened the ridge edges. X-ray analysis found clay minerals in a ridge sample and carbonates in a hollow sample. The area lies in the sulfate-rich layer of Mount Sharp. Crew plan: sample a ridge and a hollow side by side, as Curiosity did. The route passes about 0.5 km from the Gediz Vallis sulfur field.',
   src='NASA/JPL, 23 Jun 2025 and 23 Feb 2026 (Curiosity boxwork releases); position = Curiosity on sol 4563 (NASA/JPL MMGIS)',
   link='https://www.nasa.gov/missions/mars-science-laboratory/curiosity-rover/nasas-curiosity-rover-sees-martian-spiderwebs-up-close/')
 cs=M['curiosity']['sites']

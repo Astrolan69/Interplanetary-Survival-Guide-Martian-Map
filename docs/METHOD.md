@@ -79,6 +79,10 @@ With the default 2 h of work, these routes fit one EVA on foot: Gediz Vallis (7 
 - **Winter power** (Gusev) is the largest walkable north-facing slope near Home Plate (~11°, about 2 ha on the north flank of McCool Hill), found from slope and aspect on the 1 m DEM. This is how Spirit survived winters.
 - **Comms mast** (Gusev) is the Husband Hill summit, the highest point Spirit reached.
 
+## Boxwork science stop (Gale)
+
+A ★ science stop sits at Curiosity's position on sol 4563 (NASA/JPL MMGIS), inside the boxwork region that Curiosity explored from mid-2025. The boxwork is a network of mineral ridges 1–2 m tall with sandy hollows between them. Ancient groundwater hardened the ridges. Curiosity found clay minerals in a ridge sample and carbonates in a hollow sample (NASA/JPL, 23 Jun 2025 and 23 Feb 2026). The stop has its own least-time route from the crew lander (`tools/v13.py`, same rules as the other routes): 5.43 km, 4 h 3 min out and 3 h 9 min back, 450 m of climb, and it never crosses terrain steeper than 15°. The route passes about 0.5 km from the Gediz Vallis sulfur field. With 2 h of work the walk takes 9 h 12 min, which is longer than one 8 h EVA, so the plan is the pressurised rover (41 min each way).
+
 ## Verification of rover paths
 
 The paths were checked on 14 Nov 2026:
