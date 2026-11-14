@@ -277,7 +277,7 @@ requestAnimationFrame(loop);
 <script>
 (async()=>{
 const $=s=>document.querySelector(s); const R=3389500,D=Math.PI/180;
-const [META,MS,POV,POV2,GEO,CTR,TMP,MIN]=await Promise.all(['data/meta.json','data/missions.json','data/pov.json','data/pov_m20.json','data/geology.json','data/contours.json','data/temps.json','data/minerals.json'].map(u=>fetch(u).then(r=>r.json())));
+const [META,MS,POV,POV2,GEO,CTR,TMP,MIN]=await Promise.all(['data/meta.json','data/missions.json','data/pov.json','data/pov_m20.json','data/geology.json','data/contours.json','data/temps.json','data/minerals.json'].map(u=>fetch(u,{cache:'no-cache'}).then(r=>r.json())));
 const dist=(a,b)=>{const p1=a[0]*D,p2=b[0]*D,dl=(b[1]-a[1])*D,h=Math.sin((p2-p1)/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
 const BB=k=>{const b=META[k].bbox;return [[b[1],b[0]],[b[3],b[2]]]};
 const fmtKm=m=>m>=10000?Math.round(m/1000).toLocaleString('en')+' km':m>=1000?(m/1000).toFixed(1)+' km':Math.round(m)+' m';
@@ -316,7 +316,7 @@ function applyBase(){active.forEach(l=>l.remove());active=[];const op=$('#opa').
 
 const TI_RAMP='linear-gradient(90deg,#4d09c0 0%,#7b2fff 6%,#3b38e6 14%,#0a55e9 22%,#1494f6 30%,#2ccbfe 38%,#2bf9e6 45%,#05e98c 52%,#04c740 59%,#5ae208 66%,#b6f103 73%,#f6f404 79%,#fec403 85%,#ff7a04 91%,#ff1a12 95%,#ff9a9b 98%,#fff4f6 100%)';
 const tiClass=v=>v<100?'fine dust (soft; very cold at night)':v<250?'sand / fine regolith':v<400?'coarse sand, duricrust, scattered rock':'rock & bedrock (firm; warmest at night)';
-let TIG=null;(async()=>{const bm=await createImageBitmap(await (await fetch('data/ti_grid.png')).blob(),{colorSpaceConversion:'none',premultiplyAlpha:'none'});const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bm,0,0);TIG={w:bm.width,h:bm.height,d:x.getImageData(0,0,bm.width,bm.height).data}})();
+let TIG=null;(async()=>{const bm=await createImageBitmap(await (await fetch('data/ti_grid.png',{cache:'no-cache'})).blob(),{colorSpaceConversion:'none',premultiplyAlpha:'none'});const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bm,0,0);TIG={w:bm.width,h:bm.height,d:x.getImageData(0,0,bm.width,bm.height).data}})();
 function tiAt(lat,lon){if(!TIG)return null;lon=((lon+180)%360+360)%360-180;const j=Math.min(TIG.w-1,Math.floor((lon+180)/360*TIG.w)),i=Math.min(TIG.h-1,Math.floor((90-lat)/180*TIG.h));const k=TIG.d[(i*TIG.w+j)*4];return k===255?null:25+k/250*575}
 const fC=v=>(v>0?'+':'')+Math.round(v)+' °C';
 function remsChart(){const T=TMP.curiosity,W=236,H=110,y=v=>8+(30-v)/130*(H-26);let g='';
@@ -369,11 +369,11 @@ $('#opa').oninput=applyBase;
 
 /* grids for hover */
 const GR={};
-async function grid(k){if(GR[k])return GR[k];const m=META[k];const bm=await createImageBitmap(await (await fetch(`data/${k}_grid.png`)).blob(),{colorSpaceConversion:'none',premultiplyAlpha:'none'});
+async function grid(k){if(GR[k])return GR[k];const m=META[k];const bm=await createImageBitmap(await (await fetch(`data/${k}_grid.png`,{cache:'no-cache'})).blob(),{colorSpaceConversion:'none',premultiplyAlpha:'none'});
   const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bm,0,0);GR[k]={m,d:x.getImageData(0,0,c.width,c.height).data};return GR[k]}
 function sample(k,lat,lon){const g=GR[k];if(!g)return null;if(k==='global')lon=((lon+180)%360+360)%360-180;const b=g.m.bbox;const j=Math.floor((lon-b[0])/(b[2]-b[0])*g.m.w),i=Math.floor((b[3]-lat)/(b[3]-b[1])*g.m.h);if(i<0||j<0||i>=g.m.h||j>=g.m.w)return null;const o=(i*g.m.w+j)*4;const raw=(g.d[o]<<8)|g.d[o+1];if(k==='overview'&&(raw<=1||raw>=65534))return null;return {z:g.m.lo+raw/65535*(g.m.hi-g.m.lo),s:g.d[o+2]/4}}
 ['global','overview','gale','spirit','jezero'].forEach(grid);
-const GI={};const ldI=async(n,u,bb)=>{const bm=await createImageBitmap(await (await fetch(u)).blob(),{colorSpaceConversion:'none',premultiplyAlpha:'none'});const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bm,0,0);GI[n]={bb,w:bm.width,h:bm.height,d:x.getImageData(0,0,bm.width,bm.height).data}};ldI('g','data/geol_idx.png',[-180,-90,180,90]);ldI('o','data/geol_idx_ov.png',META.overview.bbox).then(()=>{if(base==='geol')renderLegend()});
+const GI={};const ldI=async(n,u,bb)=>{const bm=await createImageBitmap(await (await fetch(u,{cache:'no-cache'})).blob(),{colorSpaceConversion:'none',premultiplyAlpha:'none'});const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bm,0,0);GI[n]={bb,w:bm.width,h:bm.height,d:x.getImageData(0,0,bm.width,bm.height).data}};ldI('g','data/geol_idx.png',[-180,-90,180,90]);ldI('o','data/geol_idx_ov.png',META.overview.bbox).then(()=>{if(base==='geol')renderLegend()});
 function geoAt(lat,lon){for(const n of ['o','g']){const G=GI[n];if(!G)continue;let lo=lon;if(n==='g')lo=((lo+180)%360+360)%360-180;const b=G.bb;if(lo<b[0]||lo>b[2]||lat<b[1]||lat>b[3])continue;const j=Math.min(G.w-1,Math.floor((lo-b[0])/(b[2]-b[0])*G.w)),i=Math.min(G.h-1,Math.floor((b[3]-lat)/(b[3]-b[1])*G.h));const k=G.d[(i*G.w+j)*4];return k?GEO.units[k-1]:null}return null}
 map.on('click',e=>{if(base!=='geol')return;const u=geoAt(e.latlng.lat,e.latlng.lng);if(!u)return;L.popup({maxWidth:300}).setLatLng(e.latlng).setContent(`<h4><i style="display:inline-block;width:11px;height:11px;border-radius:2px;background:${u.c};vertical-align:-1px;margin-right:5px"></i>${u.code} · ${u.name}</h4><p style="font:11px var(--mono)">${u.group||''}</p>${u.char?`<p><b>Looks like:</b> ${u.char}</p>`:''}${u.interp?`<p><b>Interpretation:</b> ${u.interp}</p>`:''}<p style="color:var(--mute)">USGS SIM 3292 (Tanaka et al. 2014)</p>`).openOn(map)});
 map.on('mousemove',e=>{const la=e.latlng.lat,lo=e.latlng.lng;let k=key4[view],s=null;for(const kk of [key4[view],'gale','spirit','jezero','overview','global']){const t=sample(kk,la,lo);if(t){s=t;k=kk;break}}
