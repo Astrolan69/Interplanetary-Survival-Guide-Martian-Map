@@ -167,8 +167,7 @@ header .hb{white-space:nowrap}header nav button{white-space:nowrap}
       <div><span class="ico k-regolith" style="display:inline-grid;width:16px;height:16px;vertical-align:-3px">▦</span> martian regolith</div>
       <div><span class="ico k-hazard" style="display:inline-grid;width:16px;height:16px;vertical-align:-3px">!</span> hazard (soft soil, sand, cliffs)</div>
       <div><span style="height:12px;border:2px dashed #ff4fd8;background:#ff4fd810"></span> hazard zone outline</div>
-      <div><span style="height:12px;border:1px solid #ffb020;background:#ffb02052"></span> no-go: slope 15–25° (27–47 %)</div>
-      <div><span style="height:12px;border:1px solid #ff2d2d;background:#ff2d2d80"></span> no-go: slope &gt; 25° (&gt; 47 %)</div>
+      <div><span style="height:12px;border:1px solid #ff2d2d;background:#ff2d2d80"></span> steep: slope &gt; 25° (&gt; 47 %), Image layer</div>
       <div><span style="display:inline-block;width:16px;border-top:3px solid #ff9a62;vertical-align:4px"></span> rover path (NASA mission)</div>
       <div><span style="display:inline-block;width:16px;border-top:3px dashed #5fd6e8;vertical-align:4px"></span> safest route</div>
     </div>
@@ -311,7 +310,7 @@ OV.global.ti=L.layerGroup([L.imageOverlay('img/global_ti.png',GB1),L.imageOverla
 L.LayerGroup.prototype.setOpacity=function(o){this.eachLayer(l=>l.setOpacity&&l.setOpacity(o));return this};
 const extraVis={gale:L.imageOverlay('img/gale_boxwork.jpg',[[-4.85,137.355],[-4.78,137.415]])};
 let view='overview',base='vis',therm='tnight',active=[];
-function applyBase(){active.forEach(l=>l.remove());active=[];const op=$('#opa').value/100;
+function applyBase(){if(typeof syncNG==='function')syncNG();active.forEach(l=>l.remove());active=[];const op=$('#opa').value/100;
   const areas=isReg(view)?AREAS[view]:['global',regOf(view),key4[view]];
   if(base==='therm'&&therm==='ti'){areas.forEach(a=>{const l=OV[a].vis;l.setOpacity((a==='global'||isReg(a))&&!isReg(view)?.55:1);l.addTo(map);active.push(l)});const g=OV.global.ti;g.setOpacity(op*(isReg(view)?.9:.6));g.addTo(map);active.push(g);renderLegend();buildExtras();return}
   if(base==='geol'){areas.forEach(a=>{const l=OV[a].vis;l.setOpacity((a==='global'||isReg(a))&&!isReg(view)?.55:1);l.addTo(map);active.push(l)});[OV.global.geol,OV.overview.geol].forEach(g=>{g.setOpacity(op*(isReg(view)?.85:.45));g.addTo(map);active.push(g)});renderLegend();buildExtras();return}
@@ -439,7 +438,7 @@ function buildLayers(){H.clearLayers();P.clearLayers();SL.clearLayers();
     if(view==='curiosity')POV.forEach(p=>L.circleMarker([p.lat,p.lon],{radius:4,color:'#000',weight:1,fillColor:'#fff',fillOpacity:1}).addTo(H).bindPopup(`<h4>Rover view · sol ${p.sol}</h4><p>Raw ${p.instrument.replace('_',' ')} image taken here: what a crew would see.</p><img src="pov/${p.file}" alt=""><p><a href="${p.link}" target="_blank">NASA raw image ↗</a></p>`,{maxWidth:280}));
     (M.sulfur||[]).forEach(x=>{L.circle([x.lat,x.lon],{radius:x.kind==='regolith'?60:90,color:{sulfur:'#ffe14d',sulfate:'#ff8c1a',regolith:'#c79a6b'}[x.kind],weight:1.5,fillOpacity:.15,interactive:false}).addTo(SL);L.marker([x.lat,x.lon],{icon:(()=>{const nb=(M.sulfur||[]).filter(y=>y!==x&&dist([x.lat,x.lon],[y.lat,y.lon])<120);const ic=icon('k-'+x.kind,KI[x.kind],26);if(nb.length&&!x.route&&(x.kind==='regolith'||nb.some(y=>y.route))){ic.options.iconAnchor=x.kind==='regolith'?[34,-6]:[-8,30]}return ic})(),zIndexOffset:700}).addTo(SL).bindPopup(sulfHtml(x,M.lander),{maxWidth:300})});
     // predictions
-    {const hz=HZ[view]||{};[['nogo15',NG15],['nogo25',NG25]].forEach(([n,st])=>{const r=hz[n]||[];if(r.length)L.polygon(r,{...st,fillRule:'evenodd',interactive:false,smoothFactor:.5}).addTo(P)})}
+    {NGL.clearLayers();const r=(HZ[view]||{}).nogo25||[];if(r.length)L.polygon(r,{...NG25,fillRule:'evenodd',interactive:false,smoothFactor:.5}).addTo(NGL)}
     const Lz=M.lander;M_lz=Lz;L.circle([Lz.lat,Lz.lon],{radius:300,color:'#5fd6e8',weight:2,dashArray:'6 5',fillOpacity:.12}).addTo(P);
     L.marker([Lz.lat,Lz.lon],{icon:icon('k-lander','▼',26),zIndexOffset:600}).addTo(P).bindPopup(landerHtml(Lz));
     RTS=[];RSEL=-1;M.sites.forEach((s,i)=>{if(s.route)addRoute(s);
@@ -448,9 +447,10 @@ function buildLayers(){H.clearLayers();P.clearLayers();SL.clearLayers();
     (M.sulfur||[]).forEach(x=>{if(x.route)addRoute(x)});
   }
   sync()}
-function sync(){$('#oSulf').checked?SL.addTo(map):SL.remove();$('#oHist').checked?H.addTo(map):H.remove();$('#oPred').checked?P.addTo(map):P.remove()}
+function sync(){$('#oSulf').checked?SL.addTo(map):SL.remove();$('#oHist').checked?H.addTo(map):H.remove();$('#oPred').checked?P.addTo(map):P.remove();syncNG()}
+function syncNG(){if(!window.NGL)return;($('#oPred').checked&&base==='vis'&&!isReg(view))?NGL.addTo(map):NGL.remove()}
 $('#oHist').onchange=sync;$('#oSulf').onchange=sync;$('#oPred').onchange=sync;
-const NG15={color:'#ffb020',weight:1,opacity:.9,fillColor:'#ffb020',fillOpacity:.32},NG25={color:'#ff2d2d',weight:1,opacity:.95,fillColor:'#ff2d2d',fillOpacity:.5};
+window.NGL=L.layerGroup();const NG15={color:'#ffb020',weight:1,opacity:.9,fillColor:'#ffb020',fillOpacity:.32},NG25={color:'#ff2d2d',weight:1,opacity:.95,fillColor:'#ff2d2d',fillOpacity:.5};
 let RTS=[],RSEL=-1;
 const RSTY={base:[{opacity:.45,weight:6},{opacity:1,weight:3}],dim:[{opacity:.12,weight:6},{opacity:.28,weight:3}],on:[{opacity:.75,weight:9},{opacity:1,weight:5}]};
 function addRoute(x){const sh=L.polyline(x.route.pts,{color:'#000',weight:6,opacity:.45}).addTo(P),ln=L.polyline(x.route.pts,{color:'#5fd6e8',weight:3,dashArray:'8 6'}).addTo(P);const i=RTS.length;RTS.push({x,sh,ln});
@@ -532,7 +532,7 @@ const S=[
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#base'),h:'Map layer',b:`<p>The same four layers, now at high resolution (HiRISE, 1–7 m/px) at each rover site.</p><p>The <b>legend</b> under the buttons explains colors: <b>Elevation</b> = meters above the Mars datum, <b>Thermal Night IR</b> = bright rock / dark sand, <b>Geology</b> = unit and age.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#opa'),h:'Opacity',b:`<p>Fade the chosen layer to compare it with the image beneath, e.g. elevation over terrain.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>secOf('#oSulf'),h:'Overlays: turn information on and off',b:`<ul><li><b style="color:#ffe14d">Resources</b>: where rovers measured sulfur, sulfates and regolith.</li><li><b>NASA mission route</b>: real path, landing site, numbered events, rover-eye photos (white dots).</li><li><b>Lat / lon grid</b>: coordinates in °E.</li><li><b>Astronaut exploration plan</b>: my proposed lander, sites and safe routes.</li></ul>`},
- {pre:async()=>{await toMap();await view('curiosity')},t:()=>{const k=[...document.querySelectorAll('#left .sec h3')].find(h=>/Map (key|legend)/i.test(h.textContent));return k?k.closest('.sec'):null},h:'Map legend',b:`<ul><li><span class="ico-in" style="background:#ffe14d;color:#3a2d00">S</span><b>pure sulfur</b>: binder, melt and mix</li><li><span class="ico-in" style="background:#ff8c1a;color:#2a1400;font-size:7px">SO₄</span><b>sulfates</b>: sulfur ore</li><li><span class="ico-in" style="background:#c79a6b;color:#2a1a0a">▦</span><b>martian regolith</b></li><li><b>▼</b> location crew lander (300 m zone), <b>💧</b> resources, <b style="color:#ff5a5a">!</b> hazard, <b style="color:#ff4fd8">pink dashed outline</b>: hazard zone (soft soil, sand, steep flanks), <b style="color:#ffb020">amber</b>: no-go slope 15–25° (27–47 %), <b style="color:#ff2d2d">red</b>: no-go slope &gt; 25° (&gt; 47 %)</li><li><b style="color:#ff9a62">orange line</b>: rover path (NASA mission), <b style="color:#5fd6e8">dashed blue</b>: safest route</li></ul>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>{const k=[...document.querySelectorAll('#left .sec h3')].find(h=>/Map (key|legend)/i.test(h.textContent));return k?k.closest('.sec'):null},h:'Map legend',b:`<ul><li><span class="ico-in" style="background:#ffe14d;color:#3a2d00">S</span><b>pure sulfur</b>: binder, melt and mix</li><li><span class="ico-in" style="background:#ff8c1a;color:#2a1400;font-size:7px">SO₄</span><b>sulfates</b>: sulfur ore</li><li><span class="ico-in" style="background:#c79a6b;color:#2a1a0a">▦</span><b>martian regolith</b></li><li><b>▼</b> location crew lander (300 m zone), <b>💧</b> resources, <b style="color:#ff5a5a">!</b> hazard, <b style="color:#ff4fd8">pink dashed outline</b>: hazard zone (soft soil, sand, steep flanks), <b style="color:#ff2d2d">red areas</b>: slopes steeper than 25° (&gt; 47 %), shown on the Image layer</li><li><b style="color:#ff9a62">orange line</b>: rover path (NASA mission), <b style="color:#5fd6e8">dashed blue</b>: safest route</li></ul>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#map'),h:'Click anything on the map',b:`<p>Every marker opens a card: what was found, on which <b>sol</b> (Mars day), exact coordinates, and the source. Numbered pins are mission events; white dots are real rover photos.</p><p>Drag to pan, scroll or <b>+ / −</b> to zoom.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#readout'),h:'Live readout',b:`<p>Under the cursor: <b>latitude/longitude</b>, <b>elevation</b> in meters and <b>slope</b> (green &lt; 8°, yellow 8–15°, red &gt; 15°: too steep on foot). With Geology on, also the geologic unit.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#panel'),h:'The mission story',b:`<ul><li><b>Target resources</b>: verdict for the site and distance of each resource from the crew lander.</li><li><b>NASA mission route</b>: the timeline. Click an entry to fly there.</li><li><b>Astronaut exploration plan</b>: the crew lander, planned sites and the safest routes to them.</li></ul>`},
