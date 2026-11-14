@@ -29,6 +29,20 @@ All map data is real NASA / USGS data, downloaded once and stored in this reposi
 
 Elevation values are meters relative to the Mars areoid/datum. Thermal brightness is relative, not calibrated temperature.
 
+## Layer details
+
+| Detail | Dataset | Notes |
+|---|---|---|
+| Contour lines and spot heights | Same DEMs as the Elevation layer | Steps: 2 km (planet), 1 km (overview), 100 m (Gale), 10 m (Gusev), 50 m (Jezero) |
+| Real ground and air temperatures, Gale | Curiosity REMS daily min/max (NASA/JPL, CAB INTA-CSIC outreach feed) | 4,694 sols, sol 10–4995; values outside −110…+40 °C dropped |
+| Air temperatures, Jezero | Perseverance MEDA daily min/max (same feed) | Sols 1130–1133 (Apr 2024) |
+| Night ground temperature, Jezero | MEDA, sols 128–188 | ≈ 200 K, EMIRS–rover comparison (arXiv 2204.12850) |
+| Gusev surface temperatures, thermal inertia | Mini-TES | Spanovich et al. 2006, Icarus 180; Fergason et al. 2006, JGR 111 |
+| Thermal inertia (global) | MGS TES (Mars Trek `TES_Thermal_Inertia`) | Values read back from the 25–600 color scale |
+| Aqueous minerals | Ehlmann & Edwards 2014 (Mars Trek feature service) | 4,572 points: phyllosilicate, sulfate, chloride, silica, carbonate |
+| Hydrous minerals | Carter et al. 2013, JGR 118 (Mars Trek feature service) | 1,648 CRISM/OMEGA detections |
+| Rover mineralogy | Bish et al. 2013 (Science 341); Christensen et al. 2004 (Science 305); Morris et al. 2006 (JGR 111); Liu et al. 2022 (Science 377); Udry et al. 2022; Beyssac et al. 2023; Hurowitz et al. 2023 | Shown in the Geology legend |
+
 ## Rover paths and events
 
 | Mission | Source | Coverage |

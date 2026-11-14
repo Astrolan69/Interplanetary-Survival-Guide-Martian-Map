@@ -34,9 +34,9 @@ The header tabs switch between:
 
 - **Map layer**
   - **Image**: Viking color mosaic (overview) and HiRISE at the rover sites.
-  - **Elevation**: height above the Mars datum, in meters. The color bar shows the range and the readout shows the exact value and slope.
-  - **Thermal**: THEMIS infrared. **Night IR** helps most: bright means rock that holds heat (firm ground) and dark means dust or sand (soft).
-  - **Geology**: USGS units. Hover a point for its unit and click it for the description. The first letter of the code gives the age: **N**oachian, **H**esperian, **A**mazonian.
+  - **Elevation**: height above the Mars datum, in meters. The map adds contour lines with height labels and ▲/▼ for the highest and lowest point. The legend gives the area's highest and lowest point, its relief and the contour step.
+  - **Thermal**: THEMIS infrared. **Night IR** helps most: bright means rock that holds heat (firm ground) and dark means dust or sand (soft). **Inertia** shows TES thermal inertia, and the readout gives its value and what the ground is likely made of. The legend also shows **real measured temperatures** from Curiosity REMS (with a monthly chart), Perseverance MEDA and Spirit Mini-TES.
+  - **Geology**: USGS units. Hover a point for its unit and click it for the description. The first letter of the code gives the age: **N**oachian, **H**esperian, **A**mazonian. Colored dots are **water-formed minerals** detected from orbit (clays, sulfates, chlorides, silica, carbonates); click one for details. The legend lists the minerals measured on the ground by each rover.
 - **Opacity slider**: fades the chosen layer to compare it with the one below.
 - **Overlays**
   - **Sulfur & concrete**: S, SO₄ and ▦ markers. Click one for the finding, its use and its source.
