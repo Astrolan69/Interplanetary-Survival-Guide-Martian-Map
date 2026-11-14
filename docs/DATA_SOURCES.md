@@ -23,7 +23,7 @@ All map data is real NASA / USGS data, downloaded once and stored in this reposi
 | Elevation | whole planet | MGS MOLA 128/64 ppd merge (`mola128_mola64_merge_90Nto90S_SimpleC_clon0`) | ~ 460 m |
 | Elevation | overview, Jezero | MOLA + HRSC blended DEM 200 m (`Mars_MOLA_blend200ppx_HRSC_DEM_clon0dd_200mpp_lzw`) | 200 m |
 | Elevation | Gale | MRO HiRISE Gale DEM (`Gale_DEM_SMG_1m`), resampled | 1 m → 30 m grid |
-| Elevation | Gusev | CTX/HiRISE Columbia Hills DEM, calibrated to MOLA/HRSC (r = 0.88) | ~ 10 m grid |
+| Elevation | Gusev | MRO HiRISE Columbia Hills DEM (`DEM_1m_ColumbiaHills`, Float32 ImageServer) | 1 m → ~10 m grid |
 | Thermal | whole planet, sites | Mars Odyssey THEMIS day and night IR global mosaics | 100 m (65°S–65°N) |
 | Geology | whole planet | USGS SIM 3292 (Tanaka et al. 2014), 1:20,000,000 | rasterised 4096×2048 (global), 36 px/° (overview) |
 

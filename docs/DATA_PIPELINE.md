@@ -31,7 +31,8 @@ Large binary data was moved out of the browser as gzip + base64 chunks and reass
 ## 3. Processing notes
 
 - **Spirit coordinates:** `CORRECTED_X/Y` in the MER notebook are meters in an equirectangular projection centred on 175.5°E, so `lon = 175.5 + X / 59275.06` and `lat = Y / 59275.06`.
-- **Spirit DEM:** the CTX/HiRISE DEM saturates at gray 255 in places. It was merged with upsampled MOLA-HRSC heights and calibrated to them (r = 0.88).
+- **Spirit DEM:** rebuilt from the raw Float32 values of the Mars Trek `DEM_1m_ColumbiaHills` ImageServer (exported at ~5 m, block-averaged to the ~10 m grid). The earlier version used an 8-bit gray DEM that saturated on Husband and McCool Hills (a flat plateau at −1,871 m); the summit now correctly reaches about −1,859 m on Spirit's path.
+- **Slopes and no-go zones:** terrain slope is the gradient magnitude of each DEM grid (Gale ~30 m, Gusev ~10 m, Jezero ~19 m cells; Jezero is upsampled from the 200 m MOLA/HRSC blend, so its slopes are smoothed and likely underestimated). Cells steeper than 15° are drawn as red no-go hatching, and the safest routes (`tools/v8.py`) never enter them; they also stay 50 m outside every hazard zone.
 - **Elevation colors:** the overview and global layers share one range (−8,000 to +12,000 m), so colors match where they meet.
 - **No-data:** HiRISE no-data is masked, so lander zones never fall into image gaps.
 - **Resampling** uses PIL bicubic. Earlier scipy zoom output left a zero last column and was replaced.

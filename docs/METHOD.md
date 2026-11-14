@@ -34,7 +34,7 @@ Cells are excluded if they are:
 | Site | Lander zone | Mean slope | Elevation |
 |---|---|---|---|
 | Gale | 4.7373°S 137.4023°E | 3.8° | −4,057 m |
-| Gusev | 14.5756°S 175.5187°E | 0.9° | −1,938 m |
+| Gusev | 14.5756°S 175.5187°E | 1.1° | −1,942 m |
 | Jezero | 18.4202°N 77.3994°E | 1.6° | −2,569 m |
 
 ## Walking routes
@@ -43,14 +43,16 @@ Routes are least-time paths found with Dijkstra on an 8-connected DEM grid:
 - walking speed from **Tobler's hiking function**, `v = exp(−3.5 · |slope + 0.05|)`, scaled to ~3 km/h on flat ground (suited astronaut);
 - slowed further by HiRISE roughness, `v / (1 + 2.5 · roughness)`;
 - grades steeper than **15°** blocked (12° on the smoothest plains);
+- DEM cells whose terrain slope (gradient magnitude, including cross-slope) exceeds **15°** are never entered: these are the red no-go hatching on the map;
+- every hazard zone plus a 50 m margin is avoided;
 - pressurised-rover time assumes 8 km/h.
 
-Each route reports distance, walking time, rover time, total climb and steepest grade.
+Each route reports distance, walking time, rover time, total climb and the steepest terrain slope it crosses.
 
 ## Other predicted sites
 
-- **Hazards** are the steepest ~500 m patch near the work area (DEM), plus known soft soil (Troy).
-- **Winter power** (Gusev) is a north-facing 8–20° slope near Home Plate. This is how Spirit survived winters.
+- **Hazard zones** are the steepest ~500 m patch near the work area (DEM), plus places where a rover really got into trouble: Hidden Valley sand ripples (Curiosity), Troy and Tyrone loose sulfate soil (Spirit).
+- **Winter power** (Gusev) is the largest walkable north-facing slope near Home Plate (~11°, about 2 ha on the north flank of McCool Hill), found from slope and aspect on the 1 m DEM. This is how Spirit survived winters.
 - **Comms mast** (Gusev) is the Husband Hill summit, the highest point Spirit reached.
 
 ## Verification of rover paths
