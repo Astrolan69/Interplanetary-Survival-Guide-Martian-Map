@@ -1,8 +1,9 @@
 import json, math, numpy as np, sys
-sys.path.insert(0,'/home/claude/tools')
-src=open('/home/claude/tools/v2b.py').read(); exec(src[:src.index('out={}')])
-S='/home/claude/repo/'
-G3=np.load('/home/claude/data3/grids3.npz')
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
+sys.path.insert(0,TOOLS)
+src=open(TOOLS+'/v2b.py').read(); exec(src[:src.index('out={}')])
+S=ROOT+'/'
+G3=np.load(RAW+'/data3/grids3.npz')
 M=json.load(open(S+'data/missions.json'))
 def mk(key,z,sl,vis):
     if sl is None:

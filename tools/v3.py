@@ -1,8 +1,9 @@
 import json, math, numpy as np
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 from PIL import Image
 from scipy import ndimage
 src=open('tools/v2.py').read(); exec(src[:src.index('# ---------- region')])
-D3='/home/claude/data3/'
+D3=RAW+'/data3/'
 META.update(json.load(open(S+'data/meta.json')))
 BOX.update(north=[70,10,140,52], jezero=[77.215,18.405,77.47,18.515], viking2=[134.255,47.645,134.345,47.700])
 zr=np.load(D3+'reg2_dem.npy').astype(float)

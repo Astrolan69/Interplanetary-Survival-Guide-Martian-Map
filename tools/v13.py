@@ -10,7 +10,7 @@ from scipy import ndimage
 HERE=os.path.dirname(os.path.abspath(__file__))
 src=open(os.path.join(HERE,'v8.py')).read()
 S=os.path.dirname(HERE)+'/'
-pre=src[:src.index('# ---- 1. Spirit DEM')].replace("S='/home/claude/repo/'","")
+pre=src[:src.index('# ---- 1. Spirit DEM')].replace("S=ROOT+'/'","")
 exec(pre)                                                     # helpers, META
 exec(src[src.index('def load(k):'):src.index('# ---- 2.')])   # load()
 exec(src[src.index('def dist('):src.index('M=json.load(')])   # dist, G class (route())

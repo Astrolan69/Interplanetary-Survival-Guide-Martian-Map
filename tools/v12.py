@@ -1,8 +1,9 @@
 # v12: "Ground" layer = walking conditions interpreted from MGS TES thermal inertia (Mars Trek TES_Thermal_Inertia).
 # Classes (J m-2 K-1 s-1/2): <100 soft dust, 100-250 sand, 250-400 coarse sand / duricrust / scattered rock, >400 rock & bedrock.
 import numpy as np
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 from PIL import Image
-S='/home/claude/repo/'
+S=ROOT+'/'
 CL=[(0,100,(224,71,60)),(100,250,(242,182,50)),(250,400,(156,204,74)),(400,1e9,(47,174,97))]
 idx=np.array(Image.open(S+'data/ti_grid.png')).astype(float); nod=idx==255; ti=25+idx/250*575
 H,W=ti.shape; rgba=np.zeros((H,W,4),np.uint8)

@@ -1,9 +1,10 @@
 # v8: Spirit DEM rebuilt from the Mars Trek 1 m Columbia Hills DEM (Float32 ImageServer),
 # no-go overlays regenerated, all safest routes recomputed with a terrain-slope limit (no cell steeper than 15 deg).
 import json, math, heapq, numpy as np
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 from PIL import Image
 from scipy import ndimage
-S='/home/claude/repo/'
+S=ROOT+'/'
 R=3389500.0; DEG=math.pi/180*R
 ELEV=[(0,(36,40,110)),(.15,(40,95,170)),(.3,(60,160,170)),(.45,(110,190,110)),(.6,(225,215,110)),(.75,(220,140,70)),(.88,(170,80,60)),(1,(250,245,240))]
 def ramp(t,stops):
@@ -26,7 +27,7 @@ def save_layers(key,z,b):
     META[key].update(bbox=b,lo=lo,hi=hi,w=w,h=h,cell=[round(dx,1),round(dy,1)])
 # ---- 1. Spirit DEM
 b=META['spirit']['bbox']
-zs=np.load('/home/claude/data4/spi_grid_z.npy')
+zs=np.load(RAW+'/data4/spi_grid_z.npy')
 save_layers('spirit',zs,b)
 json.dump(META,open(S+'data/meta.json','w'),separators=(',',':'))
 def load(k):

@@ -1,5 +1,6 @@
 import json, math, numpy as np
-src=open('/home/claude/tools/v6.py').read(); exec(src[:src.index("targets=")])
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
+src=open(TOOLS+'/v6.py').read(); exec(src[:src.index("targets=")])
 def find(lst,pre): return [s for s in lst if s['title'].startswith(pre)][0]
 jobs={'curiosity':[('sulfur','Sulfate-bearing unit')],
       'spirit':[('sulfur','Arad'),('sulfur','Gusev plains'),('sites','Sulfate-rich soils')]}

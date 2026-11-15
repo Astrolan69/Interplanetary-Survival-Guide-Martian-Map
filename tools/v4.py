@@ -1,8 +1,9 @@
 import json, math, numpy as np
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 from PIL import Image
 from scipy import ndimage
 src=open('tools/v2.py').read(); exec(src[:src.index('# ---------- region')])
-D4='/home/claude/data4/'
+D4=RAW+'/data4/'
 META.update(json.load(open(S+'data/meta.json')))
 d=np.fromfile(D4+'g_dem10.d16',dtype='<i2').reshape(1024,2048).astype(np.int32)
 z=np.cumsum(d,axis=1).astype(float)*10

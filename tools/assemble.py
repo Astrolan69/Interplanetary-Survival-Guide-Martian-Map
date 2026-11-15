@@ -1,7 +1,10 @@
 import json,glob,re,sys,os,base64,gzip
-tag=sys.argv[1]; out=sys.argv[2]
+# Rebuilds files that were downloaded in base64 chunks marked @@<tag><n>@@ ... @@E@@.
+# usage: python3 tools/assemble.py <tag> <out-dir> <folder-with-chunk-files>
+tag=sys.argv[1]; out=sys.argv[2]; src_dir=sys.argv[3]
 parts={}
-for f in glob.glob('/tmp/claude-tool-results/*/*'):
+for f in glob.glob(os.path.join(src_dir,'**','*'),recursive=True):
+    if not os.path.isfile(f): continue
     try: t=open(f).read()
     except: continue
     if '@@'+tag not in t: continue

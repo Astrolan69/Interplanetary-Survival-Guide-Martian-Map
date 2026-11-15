@@ -1,8 +1,9 @@
 import json, math, heapq, csv
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 import numpy as np
 from PIL import Image
 from scipy import ndimage
-D='/home/claude/data2/'; D1='/home/claude/data/'; S='/home/claude/site2/'
+D=RAW+'/data2/'; D1=RAW+'/data/'; S=ROOT+'/'
 R=3389500.0; DEG=math.pi/180*R
 BOX=dict(region=[130,-20,180,10], gale=[137.32,-4.86,137.47,-4.56], insight=[135.57,4.44,135.68,4.56], spirit=[175.462,-14.612,175.540,-14.552])
 META={}
@@ -66,5 +67,5 @@ Image.open(D+'spi_hirise.jpg').save(S+'img/spirit_vis.jpg',quality=80)
 thermal('spirit',D+'spi_tday.png','spirit_tday'); thermal('spirit',D+'spi_tnight.png','spirit_tnight')
 META['ramps']=dict(elev=css(ELEV),thermal=css(INF))
 json.dump(META,open(S+'data/meta.json','w'))
-np.savez('/home/claude/data2/grids.npz',zg=zg,gsl=gsl,zi=zi,isl=isl,zs=zs,ssl=ssl)
+np.savez(RAW+'/data2/grids.npz',zg=zg,gsl=gsl,zi=zi,isl=isl,zs=zs,ssl=ssl)
 print({k:(v['lo'],v['hi'],v['w'],v['h'],v['cell']) for k,v in META.items() if k!='ramps'})

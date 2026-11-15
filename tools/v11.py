@@ -4,9 +4,10 @@
 #  - everything else is authentic THEMIS only: real orbit gaps and the poles (|lat| > 65 deg, outside THEMIS coverage)
 #    stay as no-data (dark background), nothing is interpolated or substituted
 import numpy as np
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 from PIL import Image
 from scipy import ndimage
-S='/home/claude/repo/'; D4='/home/claude/data4/'
+S=ROOT+'/'; D4=RAW+'/data4/'
 INF=[(0,(0,0,4)),(.25,(87,16,110)),(.5,(188,55,84)),(.75,(249,142,9)),(1,(252,255,164))]
 def ramp(t,stops):
     t=np.clip(t,0,1); out=np.zeros(t.shape+(3,))

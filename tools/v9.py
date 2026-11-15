@@ -1,15 +1,16 @@
 # v9: real hazard-zone outlines and vector no-go (>15 deg) outlines from the DEMs; routes avoid the real hazard areas (+50 m).
 import json, math, numpy as np
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 from PIL import Image
 from scipy import ndimage
 from skimage import measure
-src=open('/home/claude/tools/v8.py').read()
+src=open(TOOLS+'/v8.py').read()
 exec(src[:src.index('# ---- 1. Spirit DEM')])            # helpers, META
 exec(src[src.index('def load(k):'):src.index('# ---- 2.')])  # load()
 exec(src[src.index('def dist('):src.index('M=json.load(')])  # dist, G class
 M=json.load(open(S+'data/missions.json'))
 K={'curiosity':'gale','spirit':'spirit','perseverance':'jezero'}
-Z1=np.load('/home/claude/data4/spi_z.npy').astype(float)   # Spirit DEM at ~5 m
+Z1=np.load(RAW+'/data4/spi_z.npy').astype(float)   # Spirit DEM at ~5 m
 def rings(mask,b,minpx=3,tol=0.6):
     H,W=mask.shape; lab,n=ndimage.label(mask); sz=ndimage.sum(mask,lab,range(1,n+1))
     keep=np.isin(lab,np.where(sz>=minpx)[0]+1)

@@ -1,6 +1,6 @@
 # Data pipeline
 
-The raw NASA downloads (several hundred MB) are **not** in this repository. The processed, map-ready outputs are in `img/`, `data/` and `pov/`. The scripts in `tools/` are kept as they were used, for transparency. They use absolute paths from the original working machine, so treat them as a record of the processing rather than a turnkey build.
+The raw NASA downloads (several hundred MB) are **not** in this repository. The processed, map-ready outputs are in `img/`, `data/` and `pov/`. The scripts in `tools/` are kept as they were used, for transparency. All paths go through `tools/paths.py`: outputs are written into the repository, and raw downloads are read from the folder in the `MAREK_RAW` environment variable (default `raw/` in the repository). Run them from the repository root, for example `MAREK_RAW=/path/to/downloads python3 tools/v13.py`. Only `v13.py` needs nothing beyond the repository itself.
 
 ## 1. Download
 

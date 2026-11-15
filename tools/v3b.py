@@ -1,6 +1,7 @@
 import json, math, numpy as np
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 src=open('tools/v2b.py').read(); exec(src[:src.index('out={}')])
-D3='/home/claude/data3/'; G3=np.load(D3+'grids3.npz')
+D3=RAW+'/data3/'; G3=np.load(D3+'grids3.npz')
 out=json.load(open(S+'data/missions.json'))
 m=json.load(open(D3+'m20.json')); wp=m['wp']; hw=m['hw']
 def at(s): c=[r for r in wp if r[0]<=s]; return c[-1] if c else wp[0]

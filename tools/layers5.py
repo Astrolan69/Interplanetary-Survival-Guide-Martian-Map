@@ -1,7 +1,8 @@
 import json,numpy as np,math
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 from PIL import Image
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
-S='/home/claude/repo/'; D='/home/claude/data9/'
+S=ROOT+'/'; D=RAW+'/data9/'
 meta=json.load(open(S+'data/meta.json'))
 # ---------- 1. TES thermal inertia
 rgb=Image.open(D+'ti_rgb.png').convert('RGBA'); rgb.save(S+'img/global_ti.png',optimize=True)

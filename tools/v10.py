@@ -1,6 +1,7 @@
 # v10: no-go slope areas in two classes (15-25 deg and >25 deg), vector outlines only.
 import json, numpy as np
-src=open('/home/claude/tools/v9.py').read()
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
+src=open(TOOLS+'/v9.py').read()
 exec(src[:src.index('HZ={}')])
 HZ=json.load(open(S+'data/hazards.json'))
 for mk,k in K.items():

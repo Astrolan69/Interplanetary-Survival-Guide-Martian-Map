@@ -1,8 +1,9 @@
 import json, math, heapq, csv
+import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); from paths import ROOT, RAW, TOOLS
 import numpy as np
 from PIL import Image
 from scipy import ndimage
-D='/home/claude/data2/'; D1='/home/claude/data/'; S='/home/claude/site2/'
+D=RAW+'/data2/'; D1=RAW+'/data/'; S=ROOT+'/'
 R=3389500.0; DEG=math.pi/180*R
 META=json.load(open(S+'data/meta.json')); G=np.load(D+'grids.npz')
 def dist(a,b): # (lat,lon)
@@ -74,7 +75,7 @@ ev=[(0,'Landing: Bradbury Landing','6 Aug 2012. Curiosity lands on the Aeolis Pa
     (4563,'Boxwork region','2025. Mineral ridges 1–2 m tall left by groundwater; ridge and hollow drill samples.'),
     (5073,'Today: latest position','Last reported drive, sol 5073 (NASA MMGIS feed).')]
 cur_events=[dict(sol=s,title=t,text=x,lat=at(s)[4],lon=at(s)[3]) for s,t,x in ev]
-tr=json.load(open('/home/claude/site/data/mission.json'))['traverse']
+tr=json.load(open(RAW+'/site/data/mission.json'))['traverse']
 box=at(4718); sul=at(4199)
 k5=max(3,int(500/gg.dx)); msl=ndimage.uniform_filter(gg.sl,k5); m2=msl.copy(); m2[gg.dmap(box[4],box[3])>3000]=-1; m2[gg.nod]=-1
 hi_,hj_=np.unravel_index(np.argmax(m2),m2.shape); hz=gg.ll(hi_,hj_); hzs=float(msl[hi_,hj_])
