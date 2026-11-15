@@ -11,7 +11,7 @@ On the first visit a 14-step tour starts by itself. It covers the globe controls
 - **Scroll** to zoom toward the point under the cursor. The altitude is shown top-right.
 - **Drag** to rotate. The globe rotates slowly on its own until you touch it.
 - **Basic / Elevation / Thermal / Geology / Ground** buttons change the globe texture. The chosen layer carries over to the map.
-- **Click a rover label** to fly down and open that mission.
+- **Click an area on the globe** to fly down and open the map there; near a rover (or on its label) it opens that mission.
 - When you zoom below ~300 km, or click **Open the map →**, the 2D map opens at the point you were looking at.
 - The **🌐 Globe** button in the map header brings the globe back.
 
