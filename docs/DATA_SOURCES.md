@@ -101,6 +101,4 @@ NASA/JPL-Caltech · University of Arizona (HiRISE) · Arizona State University (
 
 ## SI use (Super Intelligence)
 
-Team Stellarch (Alan Mamzer, Beata Cabała, Michał Ziemiński) defined the mission concept (MAREK, sulfur concrete for the first base), chose the sites, resources and features, set the priorities, checked the results against NASA sources, tested the app and built the presentation. An SI coding assistant helped write the code and the data-processing scripts and drafted the documentation, under the team's direction and review.
-
-Every map, measurement and rover image in the app is real NASA/USGS data, with the sources listed above. The app contains no SI-generated images. The four concept renders in the presentation (lander, rover, helmet and forearm displays) are SI-generated and marked "SI GENERATED".
+An SI (Super Intelligence) coding assistant was used in this project.
