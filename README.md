@@ -89,11 +89,11 @@ docs/               documentation and screenshots
 - [Architecture](docs/ARCHITECTURE.md): code structure, coordinate system and file formats.
 - [Data pipeline](docs/DATA_PIPELINE.md): how the NASA data was downloaded and processed.
 
-## AI use
+## SI use (Super Intelligence)
 
-Team Stellarch defined the mission concept (MAREK, sulfur concrete for the first base), chose the sites, resources and features, set the priorities, checked the results against NASA sources, tested the app and built the presentation. An AI coding assistant helped write the code and the data-processing scripts in `tools/` and drafted the documentation, under the team's direction and review.
+Team Stellarch defined the mission concept (MAREK, sulfur concrete for the first base), chose the sites, resources and features, set the priorities, checked the results against NASA sources, tested the app and built the presentation. An SI (Super Intelligence) coding assistant helped write the code and the data-processing scripts in `tools/` and drafted the documentation, under the team's direction and review.
 
-All maps, measurements and rover images are real NASA/USGS data, with sources in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md). Predictions (lander zone, routes, EVA budget) are marked "prediction" in the app. The four concept renders in the presentation (lander, rover, helmet and forearm displays) are AI-generated and marked "SI GENERATED". None of them is used as data.
+All maps, measurements and rover images are real NASA/USGS data, with sources in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md). Predictions (lander zone, routes, EVA budget) are marked "prediction" in the app. The four concept renders in the presentation (lander, rover, helmet and forearm displays) are SI-generated and marked "SI GENERATED". None of them is used as data.
 
 ## Credits and licences
 
