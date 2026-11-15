@@ -59,7 +59,7 @@ Each route card shows one EVA (extravehicular activity) as a bar: **walk out + w
 - ✓ means the walk fits in one EVA on foot, with the reserve shown. ✗ means it does not, and the card gives the pressurised-rover option instead (8 km/h each way, suit worn only on site).
 - The card also gives the cosmic-ray dose for the whole EVA on foot (see below).
 
-With the default 2 h of work, these routes fit one EVA on foot: Gediz Vallis (7 h 41 min), the sulfate unit, every Spirit route, and the Jezero regolith route. Bagnold dunes (8 h 45 min) and Ingenuity (11 h 28 min) need the rover.
+With the default 2 h of work, every route fits one EVA on foot except the Bagnold dunes (8 h 45 min), which needs the rover. The fitting routes are Gediz Vallis (7 h 41 min), the sulfate unit, every Spirit route, the Jezero regolith route, and the two Jezero sulfate routes: Hogwallow Flats (4 h 53 min) and Yori Pass (4 h 47 min).
 
 ## Radiation dose per route
 

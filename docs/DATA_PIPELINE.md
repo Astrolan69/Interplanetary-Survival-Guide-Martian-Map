@@ -31,6 +31,7 @@ Large binary data was moved out of the browser as gzip + base64 chunks and reass
 | `v13.py` | Return time for every route (`back_h`: the same path walked from target to lander, same speed model) and the Gale boxwork science stop with its route. Run from the repo root. |
 | `v14.py` | Removes the separate "resources (water)" marker type: the Gediz Vallis site becomes pure sulfur (S), the Gusev soils sulfate (SO₄) and the Jezero delta a science stop (★). |
 | `v15.py` | Removes three plan markers: the Jezero delta science stop, the Husband Hill lookout (Spirit) and the Gale boxwork science stop with its route. Run it after `v13.py`, which adds the boxwork stop. |
+| `v16.py` | Jezero: removes the Ingenuity site and adds safest routes to the two sulfate deposits, Hogwallow Flats (2.73 km) and Yori Pass / Hidden Harbor (2.19 km), with the same rules as the other routes. |
 
 ## 3. Processing notes
 
