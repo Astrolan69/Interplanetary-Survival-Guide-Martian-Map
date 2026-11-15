@@ -40,7 +40,7 @@ Cells are excluded if they are:
 ## Walking routes
 
 Routes are least-time paths found with Dijkstra on an 8-connected DEM grid:
-- walking speed from **Tobler's hiking function**, `v = exp(−3.5 · |slope + 0.05|)`, scaled to ~3 km/h on flat ground (suited astronaut);
+- walking speed from **Tobler's hiking function**, `v = exp(−3.5 · |slope + 0.05|)`, scaled for a suited astronaut: about 2.5 km/h on flat ground, at most 3 km/h on a gentle downhill;
 - slowed further by HiRISE roughness, `v / (1 + 2.5 · roughness)`;
 - grades steeper than **15°** blocked (12° on the smoothest plains);
 - DEM cells whose terrain slope (gradient magnitude, including cross-slope) exceeds **15°** are never entered: these are the red no-go hatching on the map;
