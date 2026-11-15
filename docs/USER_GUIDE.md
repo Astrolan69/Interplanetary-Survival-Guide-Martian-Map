@@ -2,7 +2,7 @@
 
 ## 0. Guided tour
 
-On the first visit a 15-step tour starts by itself. It covers the globe controls, mission paths, layers and legends, overlays, the map-legend symbols, the readout, the mission panel, picking a single route (radiation and EVA budget), the EVA tablet and the header buttons. Use **Next → / ← Back** (or the arrow keys) to move through it, and **Skip tour** or **Esc** to close it. Reopen it anytime with **❓ Tour**, on the globe or in the map header. Add `?notour` to the URL to stop it from starting automatically.
+On the first visit a 14-step tour starts by itself. It covers the globe controls, mission paths, layers and legends, overlays, the map-legend symbols, the readout, the mission panel, picking a single route (radiation and EVA budget) and the header buttons. Use **Next → / ← Back** (or the arrow keys) to move through it, and **Skip tour** or **Esc** to close it. Reopen it anytime with **❓ Tour**, on the globe or in the map header. Add `?notour` to the URL to stop it from starting automatically.
 
 ## 1. Globe
 
@@ -61,11 +61,8 @@ For each mission:
    - **☢ Radiation**: the dose for the walk there and back. It uses the 0.64 mSv/day galactic-cosmic-ray rate that Curiosity's RAD measured in Gale (Hassler et al. 2014).
    - **EVA budget** *(prediction)*: a bar with the walk out, the work on site and the walk back, with the ~8 h EVA limit marked. ✓ means the walk fits one EVA on foot, with the reserve shown. ✗ means it does not, and the card gives the pressurised-rover option. **Work on site** above the route list sets the work time (1–4 h, default 2 h). The route list shows ✓/✗ and the EVA total for every route.
    - In Gale, the **★ boxwork science stop** (Curiosity, 2025) has its own route.
-6. **🧤 EVA tablet** (header button, or **Open in EVA tablet** under a selected route): a large, glove-friendly view of one route for a crew tablet. It shows a big ✓/✗ status with the reserve and the latest time to leave the site, large tiles (distance, EVA total, walk out and back, work time with − / +, dose), the elevation profile, and 64 px **◀ ▶** buttons to switch routes. **✕ Exit** returns to the map.
 
 ![Route card with radiation and EVA budget](img/10-route-radiation-eva.jpg)
-
-![EVA tablet mode](img/09-eva-tablet.jpg)
 
 ![Route picker, Curiosity](img/07-route-picker.jpg)
 

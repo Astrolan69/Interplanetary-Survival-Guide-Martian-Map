@@ -53,8 +53,6 @@ Both are vendored, so the page needs no CDN and makes no external requests.
 
 Radiation and EVA values are not stored. They are computed in the browser from the route times: `RAD.mSvDay = 0.64` (Curiosity RAD), `EVA_H = 8`, and `WORK` (1–4 h, picked by the user). The functions are `dose()`, `radHtml()`, `evaHtml()` and `evaT()` next to `routeHtml()`.
 
-**EVA tablet**: `tablet(true|false)` adds or removes `body.tablet`. That hides the header and both side panels and shows `<aside id="tablet">` in the right grid column. `renderTablet()` draws the selected route (`RTS[RSEL]`), and `selRoute()` redraws the tablet while it is open. It is exposed as `APP.tablet`.
-
 The PNG grids are read with `createImageBitmap(..., {colorSpaceConversion:'none', premultiplyAlpha:'none'})`, so the values are exact.
 
 ## Globe ↔ map hand-off

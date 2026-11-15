@@ -23,25 +23,6 @@ nav button.on{background:var(--mars);border-color:var(--mars);color:#1b0c04}nav 
 aside{background:var(--p);overflow-y:auto;scrollbar-width:thin}
 #left{grid-area:left;border-right:1px solid var(--ln)}#right{grid-area:right;border-left:1px solid var(--ln)}
 #map{grid-area:map;position:relative;background:#000}
-#tablet{display:none;grid-area:right;background:#0b0908;border-left:2px solid #5fd6e8;overflow-y:auto;padding:14px 16px 20px;color:var(--ink)}
-body.tablet #app{grid-template-rows:0 1fr;grid-template-columns:0 1fr minmax(400px,44vw);grid-template-areas:"top top top" "left map right"}body.tablet header,body.tablet #left,body.tablet #right{display:none}body.tablet #tablet{display:block}
-body.tablet #readout{display:none}
-#tablet button{min-height:64px;min-width:64px;border-radius:14px;border:2px solid #3a3530;background:#1c1916;color:var(--ink);font-size:20px;font-weight:600;cursor:pointer;touch-action:manipulation}
-#tablet button:active{background:#2a2622}
-.tb-top{display:flex;align-items:center;gap:10px}.tb-top .tb-lab{flex:1;font:600 13px var(--mono);letter-spacing:.14em;color:#5fd6e8;text-transform:uppercase}
-.tb-nav{display:grid;grid-template-columns:76px 1fr 76px;gap:10px;align-items:center;margin:14px 0 8px}
-.tb-nav .tb-n{text-align:center;font:600 15px var(--mono);color:var(--mute)}
-.tb-title{font-size:28px;font-weight:700;line-height:1.15;margin:4px 0 12px;display:flex;gap:12px;align-items:center}.tb-title .ico{width:40px;height:40px;font-size:20px;flex-shrink:0}
-.tb-st{border-radius:14px;padding:14px 16px;font-size:22px;font-weight:700;line-height:1.25;margin-bottom:12px}.tb-st small{display:block;font-size:15px;font-weight:500;line-height:1.35;margin-top:4px;opacity:.9}
-.tb-st.ok{background:#12301c;border:2px solid #5fd17a;color:#8ff0a6}.tb-st.no{background:#3a1512;border:2px solid #ff6a5a;color:#ffb3a8}
-.tb-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tb-t{background:#151210;border:2px solid #2c2824;border-radius:14px;padding:10px 14px}.tb-t small{display:block;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.tb-t b{display:block;font:700 clamp(21px,2.4vw,30px)/1.15 var(--mono);margin-top:4px;white-space:nowrap}.tb-t.rad b{color:#c6f04a}.tb-t.tot b{color:#ffd166}
-.tb-w{display:flex;align-items:center;gap:10px;margin-top:4px}.tb-w b{flex:1;text-align:center;margin:0}
-.tb-x{display:flex;gap:16px;margin:12px 2px;font:600 16px var(--mono);color:var(--dim)}
-.tb-prof .rprof svg{height:150px}.tb-prof .ax{font-size:11px}
-.tb-src{font:12px/1.4 var(--mono);color:var(--mute);margin-top:12px}
-@media(max-width:900px){body.tablet #app{grid-template-rows:0 46vh auto;grid-template-columns:1fr;grid-template-areas:"top" "map" "right"}}
 .sec{padding:13px 14px;border-bottom:1px solid var(--ln)}
 h3{margin:0 0 9px;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mars2);font-weight:600}
 .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}#base{grid-template-columns:repeat(3,1fr)}
@@ -69,7 +50,7 @@ input[type=range]{width:100%;accent-color:var(--mars)}
 .site:hover{border-color:var(--dim)}.site .t{display:flex;gap:8px;align-items:center;font-weight:600;font-size:12.5px}
 .site p{margin:5px 0 0;color:var(--dim);font-size:11.5px}
 #rsel{display:flex;flex-direction:column;gap:5px;margin:6px 0 8px}#rsel button{display:flex;align-items:center;gap:8px;text-align:left;background:var(--p2);border:1px solid var(--ln);border-radius:8px;padding:6px 9px;color:var(--ink);font:inherit;font-size:12px;cursor:pointer}#rsel button:hover{border-color:var(--dim)}#rsel button.on{border-color:#5fd6e8;background:#5fd6e81a;box-shadow:inset 3px 0 0 #5fd6e8}#rsel .rn{flex:1;font-weight:600}#rsel small{font:10.5px var(--mono);color:var(--mute)}
-.tbopen{margin-top:8px;width:100%;padding:8px;border-radius:8px;border:1px solid #5fd6e8;background:#5fd6e81a;color:var(--ink);font-size:12px;font-weight:600;cursor:pointer}#rsel button[data-r="-1"]{justify-content:center;font-weight:600}
+#rsel button[data-r="-1"]{justify-content:center;font-weight:600}
 .rsel-h{font:10.5px var(--mono);color:#5fd6e8;letter-spacing:.04em;margin-top:4px}#rinfo{border:1px solid #5fd6e855;border-radius:9px;padding:8px 10px;margin-bottom:10px;background:#5fd6e80d}#rinfo .t{display:flex;gap:8px;align-items:center;font-weight:600;font-size:12.5px}.rhint{margin:0;color:var(--mute);font-size:11.5px}.rprof{margin-top:8px}.rprof .ax{font:9px var(--mono);fill:var(--mute)}.rleg{font:10px var(--mono);color:var(--mute);margin-top:2px}
 .lg>div{display:flex;align-items:center;gap:8px;min-height:20px;line-height:1.25;font-size:12px;white-space:nowrap}.lg>div>span:first-child{flex:0 0 18px;width:18px!important;margin:0;vertical-align:0!important;box-sizing:border-box}.lg>div>span.ico{height:18px!important;display:grid!important;place-items:center;line-height:1;padding:0}
 .lg>div.tiv,.tiv{display:flex!important;flex-direction:column;align-items:stretch!important;gap:5px;margin-top:9px;white-space:normal!important;min-height:0}.tiv span,.lg>div.tiv>span:first-child{display:flex!important;width:auto!important;flex:none!important;align-items:center;gap:8px;font-size:12px;line-height:1.3;color:var(--ink)}.tiv .gsub{display:block;margin:-2px 0 3px 20px;font-size:10.5px;color:var(--mute);line-height:1.35}.leaflet-image-layer.pix{image-rendering:pixelated}.tiv i{flex:0 0 12px;width:12px;height:12px;border-radius:3px}
@@ -168,7 +149,7 @@ header .hb{white-space:nowrap}header nav button{white-space:nowrap}
     <button data-v="perseverance">Perseverance<small>Jezero · 2021–today</small></button>
   </nav>
   <div class="sp"></div>
-  <button class="hb" id="tabBtn" style="margin-right:6px" title="Big, glove-friendly view of one route">🧤 EVA tablet</button><button class="hb" id="globeBtn" style="margin-right:6px">🌐 Globe</button><button class="hb" id="helpBtn" title="Guided tour">❓ Tour</button><button class="hb" id="aboutBtn">Data sources</button>
+  <button class="hb" id="globeBtn" style="margin-right:6px">🌐 Globe</button><button class="hb" id="helpBtn" title="Guided tour">❓ Tour</button><button class="hb" id="aboutBtn">Data sources</button>
 </header>
 
 <aside id="left">
@@ -216,7 +197,6 @@ header .hb{white-space:nowrap}header nav button{white-space:nowrap}
 </div>
 
 <aside id="right"><div id="panel"></div></aside>
-<aside id="tablet" aria-label="EVA tablet"></aside>
 </div>
 
 <div id="modal"><div class="c">
@@ -509,9 +489,9 @@ function profile(x){const k=key4[view],pts=x.route.pts;let d=0,prev=null;const a
   let segs='';for(let i=1;i<a.length;i++){const c=a[i][2]<8?'#5fd17a':a[i][2]<15?'#f2c14e':'#ff5a5a';segs+=`<line x1="${X(a[i-1][0]).toFixed(1)}" y1="${Y(a[i-1][1]).toFixed(1)}" x2="${X(a[i][0]).toFixed(1)}" y2="${Y(a[i][1]).toFixed(1)}" stroke="${c}" stroke-width="2.2" stroke-linecap="round"/>`}
   const area=`<path d="M${X(0)},${H-pb} `+a.map(q=>`L${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`).join(' ')+` L${X(D)},${H-pb} Z" fill="#5fd6e8" opacity=".10"/>`;
   return `<div class="rprof"><svg viewBox="0 0 ${W} ${H}" width="100%"><text x="2" y="10" class="ax">${Math.round(z1).toLocaleString('en')} m</text><text x="2" y="${H-pb}" class="ax">${Math.round(z0).toLocaleString('en')} m</text><line x1="${pl}" y1="${H-pb}" x2="${W-4}" y2="${H-pb}" stroke="#555"/>${area}${segs}<text x="${pl}" y="${H-2}" class="ax">lander</text><text x="${W-4}" y="${H-2}" class="ax" text-anchor="end">${fmtKm(D)} · target</text></svg><div class="rleg"><span style="color:#5fd17a">■</span> &lt;8° <span style="color:#f2c14e">■</span> 8–15° <span style="color:#ff5a5a">■</span> &gt;15°</div></div>`}
-function selRoute(i,fromMap){RSEL=RSEL===i&&fromMap?-1:i;if(isTab()&&RSEL<0)RSEL=i;styleRoutes();if(isTab())renderTablet();
+function selRoute(i,fromMap){RSEL=RSEL===i&&fromMap?-1:i;styleRoutes();
   document.querySelectorAll('#rsel button').forEach(b=>b.classList.toggle('on',+b.dataset.r===RSEL));
-  const box=$('#rinfo');if(box){if(RSEL<0){box.innerHTML='<p class="rhint">Pick a route above, or click a dashed blue line on the map.</p>'}else{const x=RTS[RSEL].x;box.innerHTML=`<div class="t"><span class="ico k-${x.kind}">${KI[x.kind]}</span>${x.title}</div>${routeHtml(x.route)}${profile(x)}<button class="tbopen" onclick="APP.tablet(true)">🧤 Open in EVA tablet</button>`}}
+  const box=$('#rinfo');if(box){if(RSEL<0){box.innerHTML='<p class="rhint">Pick a route above, or click a dashed blue line on the map.</p>'}else{const x=RTS[RSEL].x;box.innerHTML=`<div class="t"><span class="ico k-${x.kind}">${KI[x.kind]}</span>${x.title}</div>${routeHtml(x.route)}${profile(x)}`}}
   if(RSEL>=0){map.flyToBounds(L.latLngBounds(RTS[RSEL].x.route.pts).extend([M_lz.lat,M_lz.lon]),{padding:[60,60],duration:.8});if(fromMap)$('#rsel')?.scrollIntoView({block:'nearest',behavior:'smooth'})}else if(fromMap!==undefined&&!fromMap){map.flyToBounds(L.latLngBounds(RTS.flatMap(r=>r.x.route.pts)),{padding:[40,40],duration:.8})}}
 let M_lz=null;
 const landerHtml=Lz=>`<h4>Location crew lander <span class="pred">prediction</span></h4>${C(Lz.lat,Lz.lon)}<p>The best landing cell in this area: lowest mean slope, smoothest HiRISE surface, low elevation, at a safe distance from targets.</p><div class="kv"><div><small>mean slope (400 m)</small><b>${Lz.slope}°</b></div><div><small>elevation</small><b>${Lz.elev.toLocaleString('en')} m</b></div><div><small>surface roughness</small><b>smoothest ${Math.max(1,Lz.rough_pct)}%</b></div><div><small>zone radius</small><b>300 m</b></div></div>`;
@@ -567,31 +547,7 @@ function go(v,opt={}){view=v;map.stop();map.setMaxZoom(19);$('#nav').querySelect
 $('#nav').onclick=e=>{const b=e.target.closest('button');if(b)go(b.dataset.v)};
 $('#aboutBtn').onclick=()=>$('#modal').classList.add('on');$('#mx').onclick=()=>$('#modal').classList.remove('on');$('#modal').onclick=e=>{if(e.target.id==='modal')$('#modal').classList.remove('on')};
 map.fitBounds(VIEWS.overview.home);go('overview');scl();grat();
-/* EVA tablet: one route, big type and big buttons for gloved hands */
-const isTab=()=>document.body.classList.contains('tablet');
-function renderTablet(){const el=$('#tablet');if(!el)return;if(!RTS.length){el.innerHTML='';return}if(RSEL<0)RSEL=0;
-  const x=RTS[RSEL].x,r=x.route,b=r.back_h??r.walk_h,T=evaT(r),ok=T<=EVA_H,turn=EVA_H-b;
-  el.innerHTML=`<div class="tb-top"><span class="tb-lab">EVA tablet · ${VIEWS[view].title.split('·')[0]} <span class="pred">prediction</span></span><button id="tbX" aria-label="Exit EVA tablet">✕ Exit</button></div>
-  <div class="tb-nav"><button id="tbP" aria-label="Previous route">◀</button><div class="tb-n">Route ${RSEL+1} of ${RTS.length}</div><button id="tbN" aria-label="Next route">▶</button></div>
-  <div class="tb-title"><span class="ico k-${x.kind}">${KI[x.kind]}</span>${x.title.split(':')[0]}</div>
-  <div class="tb-st ${ok?'ok':'no'}">${ok?'✓ Fits one 8 h EVA on foot':'✗ Too long on foot: take the rover'}<small>${ok?`Reserve ${hrs(EVA_H-T)} · leave the site by <b>T+${hrs(turn)}</b> at the latest`:`On foot: ${hrs(T)} (+${hrs(T-EVA_H)}). Rover: ${hrs(r.rover_h)} each way, ${hrs(WORK)} in the suit`}</small></div>
-  <div class="tb-g">
-   <div class="tb-t"><small>Distance</small><b>${r.km} km</b></div>
-   <div class="tb-t tot"><small>EVA total</small><b>${hrs(T)}</b></div>
-   <div class="tb-t"><small>Walk out</small><b>${hrs(r.walk_h)}</b></div>
-   <div class="tb-t"><small>Walk back</small><b>${hrs(b)}</b></div>
-   <div class="tb-t"><small>Work on site</small><div class="tb-w"><button id="tbWm" aria-label="Less work time">−</button><b>${WORK} h</b><button id="tbWp" aria-label="More work time">+</button></div></div>
-   <div class="tb-t rad"><small>☢ Dose (whole EVA)</small><b>${fmtDose(dose(T))}</b></div>
-  </div>
-  <div class="tb-x"><span>▲ climb ${r.climb} m</span><span>max slope ${r.maxslope}°</span></div>
-  <div class="tb-prof">${profile(x)}</div>
-  <div class="tb-src">Route, times and lander: my prediction from NASA DEMs (HiRISE/HRSC/MOLA). Dose: Curiosity RAD, ${RAD.mSvDay} mSv/day (Hassler et al. 2014, Science). 8 h EVA: NASA exploration suit target.</div>`;
-  $('#tbX').onclick=()=>tablet(false);$('#tbP').onclick=()=>selRoute((RSEL-1+RTS.length)%RTS.length);$('#tbN').onclick=()=>selRoute((RSEL+1)%RTS.length);
-  $('#tbWm').onclick=()=>{WORK=Math.max(1,WORK-1);renderTablet()};$('#tbWp').onclick=()=>{WORK=Math.min(4,WORK+1);renderTablet()}}
-function tablet(on){if(on&&isReg(view)){go('curiosity',{instant:true})}
-  document.body.classList.toggle('tablet',on);setTimeout(()=>{map.invalidateSize();if(on){selRoute(RSEL<0?0:RSEL)}else{panel();if(RSEL>=0){const s=RSEL;RSEL=-1;selRoute(s)}}},60)}
-$('#tabBtn').onclick=()=>tablet(true);
-window.APP={tablet,map,go,selRoute,setBase(b){base=b;$('#base').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.b===b));applyBase()},enterAt(lat,lon,altKm){const pts={curiosity:[-4.6,137.4],spirit:[-14.57,175.48],perseverance:[18.44,77.45]};
+window.APP={map,go,selRoute,setBase(b){base=b;$('#base').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.b===b));applyBase()},enterAt(lat,lon,altKm){const pts={curiosity:[-4.6,137.4],spirit:[-14.57,175.48],perseverance:[18.44,77.45]};
   let best=null,bd=1e18;for(const [k,p] of Object.entries(pts)){const d=dist([lat,lon],p);if(d<bd){bd=d;best=k}}
   if(bd<Math.max(350e3,altKm*1000*0.6)&&altKm<1500){go(best,{instant:true})}else{go('overview');setTimeout(()=>{const z=Math.max(2.5,Math.min(9,Math.log2(19265/Math.max(altKm,40))));map.setView([lat,lon],z,{animate:false})},200)}}};
 $('#globeBtn').onclick=()=>window.GLOBE&&window.GLOBE.show();
@@ -622,8 +578,7 @@ const S=[
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#readout'),h:'Live readout',b:`<p>Under the cursor: <b>latitude/longitude</b>, <b>elevation</b> in meters and <b>slope</b> (green &lt; 8°, yellow 8–15°, red &gt; 15°: too steep on foot). With Geology on, also the geologic unit.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#panel'),h:'The mission story',b:`<ul><li><b>Target resources</b>: verdict for the site and distance of each resource from the crew lander.</li><li><b>NASA mission route</b>: the timeline. Click an entry to fly there.</li><li><b>Astronaut exploration plan</b>: the crew lander, planned sites and the safest routes to them.</li></ul>`},
  {pre:async()=>{await toMap();await view('curiosity');window.APP.selRoute(0,false);const r=$('#rsel');if(r){r.closest('.sec').scrollIntoView({block:'start'});}await new Promise(z=>setTimeout(z,900))},t:()=>{const r=$('#rsel');return r?[r.previousElementSibling,r,$('#rinfo')]:null},h:'Pick a single route',b:`<p>Every mission has several <b style="color:#5fd6e8">safest routes</b> from the crew lander to sulfur, sulfates, regolith and water.</p><ul><li><b>Tap a route</b> in this list, or <b>click a dashed blue line</b> on the map: it is highlighted, the others fade and the map zooms to it.</li><li>The card shows <b>length, walking and rover time, climb and steepest grade</b>, plus an <b>elevation profile</b> coloured by slope: <span style="color:#5fd17a">green</span> &lt;8°, <span style="color:#f2c14e">yellow</span> 8–15°, <span style="color:#ff5a5a">red</span> &gt;15°.</li><li><b style="color:#c6f04a">☢ Radiation</b>: the dose for the walk there and back, at the rate Curiosity's RAD measured in Gale (0.64 mSv/day).</li><li><b style="color:#ffd166">EVA budget</b>: walk out + work on site + walk back, against one ~8 h EVA. <span style="color:#5fd17a">✓</span> fits on foot, <span style="color:#ff8a7a">✗</span> take the rover. Choose the work time with <b>Work on site</b> (1–4 h).</li><li><b>All routes</b> shows them all again.</li></ul>`},
- {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#tabBtn'),h:'EVA tablet',b:`<p><b>🧤 EVA tablet</b> shows one route in a big, glove-friendly layout for a crew tablet: large buttons, a clear <b>fits / does not fit</b> status with the latest time to leave the site, the times, the dose and the elevation profile.</p><p>Use <b>◀ ▶</b> to switch routes, <b>− / +</b> to change the work time and <b>✕ Exit</b> to go back to the map.</p>`},
- {pre:toMap,t:()=>['#tabBtn','#globeBtn','#helpBtn','#aboutBtn'].map(q=>$(q)),h:'Globe, tour and sources',b:`<ul><li><b>🧤 EVA tablet</b>: one route, big buttons.</li><li><b>🌐 Globe</b>: back to the 3D planet.</li><li><b>❓ Tour</b>: replay this guide.</li><li><b>Data sources</b>: every NASA/USGS dataset and the method behind the predictions.</li></ul><p>That's it. Enjoy exploring Mars!</p>`}
+ {pre:toMap,t:()=>['#globeBtn','#helpBtn','#aboutBtn'].map(q=>$(q)),h:'Globe, tour and sources',b:`<ul><li><b>🌐 Globe</b>: back to the 3D planet.</li><li><b>❓ Tour</b>: replay this guide.</li><li><b>Data sources</b>: every NASA/USGS dataset and the method behind the predictions.</li></ul><p>That's it. Enjoy exploring Mars!</p>`}
 ];
 let i=0,on=false;
 const hi=$('#tourHi'),card=$('#tourCard');

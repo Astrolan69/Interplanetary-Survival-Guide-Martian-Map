@@ -15,7 +15,7 @@ An interactive Mars globe and map built from real NASA data. It follows three ro
 
 | | |
 |---|---|
-| **Guided tour** | A 15-step walkthrough starts on the first visit: mission paths, layers, legend symbols, overlays, the readout, the mission panel, picking a single route (radiation and EVA budget) and the EVA tablet. It can be replayed with **❓ Tour**. |
+| **Guided tour** | A 14-step walkthrough starts on the first visit: mission paths, layers, legend symbols, overlays, the readout, the mission panel, and picking a single route (radiation and EVA budget). It can be replayed with **❓ Tour**. |
 | **3D globe start** | The app opens on a rotating Mars globe (three.js). Scroll zooms toward the cursor, dragging rotates it, and clicking a rover lands on its site. Below ~300 km altitude it switches to the 2D map. |
 | **5 data layers** | *Basic* (Viking MDIM 2.1, HiRISE), *Elevation* (MOLA, HRSC, HiRISE DEMs, colored by true height with contour lines and hover readout), *Thermal* (Mars Odyssey THEMIS day/night IR plus measured rover temperatures), *Geology* (USGS SIM 3292 global geologic map, 44 units, plus orbital water-mineral detections) and *Ground* (walking conditions interpreted from MGS TES thermal inertia). |
 | **Real rover paths** | Official traverses: NASA/JPL MMGIS for Curiosity (to sol 5073) and Perseverance (to sol 2022) plus Ingenuity's 72 flights, and the PDS MER Analyst's Notebook for Spirit (sols 1–2209). The paths were checked against official odometry and against orbital imagery ([verification](docs/METHOD.md#verification-of-rover-paths)). |
@@ -23,13 +23,10 @@ An interactive Mars globe and map built from real NASA data. It follows three ro
 | **Astronaut exploration plan (predictions)** | For each site: a proposed crew lander zone (slope + roughness + elevation), resource sites, hazard zones outlined from the DEMs, slopes steeper than 25° (Basic layer), and least-time walking routes that never cross terrain steeper than 15°. A route picker highlights any single route with its elevation profile. A ★ science stop marks the boxwork ridges on Mount Sharp (Curiosity, 2025). |
 | **Radiation on every route** | Dose for each walk and for the whole EVA, from the 0.64 mSv/day that Curiosity's RAD measured on the surface in Gale (Hassler et al. 2014, *Science*). |
 | **EVA budget** | Walk out + work on site (1–4 h) + walk back on the same path, compared with one ~8 h EVA (NASA exploration-suit target). Each route is marked ✓ fits on foot or ✗ take the pressurised rover. |
-| **EVA tablet mode** | 🧤 One selected route in a big, glove-friendly layout (64 px buttons): the fits / does not fit status with the latest turn-back time, the times, the dose and the profile. |
 | **Rover's-eye view** | Real Curiosity (Mastcam / Navcam) and Perseverance raw images taken at the event locations. Grey calibration frames were replaced with Navcam terrain images from the same sols. |
 | **Lat / lon grid & readout** | Planetocentric graticule (°E, 0–360), with coordinates, elevation and slope under the cursor. |
 
 ![Curiosity — pure sulfur at Gediz Vallis](docs/img/03-curiosity-sulfur.jpg)
-
-![EVA tablet: one route, big buttons, radiation and EVA budget](docs/img/09-eva-tablet.jpg)
 
 ## Mission focus: sulfur concrete
 
@@ -103,4 +100,4 @@ An SI (Super Intelligence) coding assistant was used in this project.
 
 ### Wersja polska (skrót)
 
-Interaktywny globus i mapa Marsa z prawdziwych danych NASA, przygotowane na NASA Space Apps 2026. Pokazują trasy łazików Curiosity, Spirit i Perseverance oraz warstwy: zdjęcia, wysokości, termiki i geologii. Celem misji są miejsca z **czystą siarką i siarczanami** oraz źródła **regolitu** jako kruszywa do **betonu siarkowego**. Najlepsze jest Gale, bo ma jedyną potwierdzoną czystą siarkę na Marsie. Każda trasa pokazuje dawkę promieniowania (Curiosity RAD, 0,64 mSv/dobę) oraz budżet EVA: czas tam, pracę na miejscu i powrót, porównane z jednym ok. 8-godzinnym wyjściem. Tryb **🧤 EVA tablet** pokazuje jedną trasę w dużym widoku, wygodnym do obsługi w rękawicach. Uruchomienie: `python3 -m http.server`, potem otwórz `http://localhost:8000`.
+Interaktywny globus i mapa Marsa z prawdziwych danych NASA, przygotowane na NASA Space Apps 2026. Pokazują trasy łazików Curiosity, Spirit i Perseverance oraz warstwy: zdjęcia, wysokości, termiki i geologii. Celem misji są miejsca z **czystą siarką i siarczanami** oraz źródła **regolitu** jako kruszywa do **betonu siarkowego**. Najlepsze jest Gale, bo ma jedyną potwierdzoną czystą siarkę na Marsie. Każda trasa pokazuje dawkę promieniowania (Curiosity RAD, 0,64 mSv/dobę) oraz budżet EVA: czas tam, pracę na miejscu i powrót, porównane z jednym ok. 8-godzinnym wyjściem. Uruchomienie: `python3 -m http.server`, potem otwórz `http://localhost:8000`.
