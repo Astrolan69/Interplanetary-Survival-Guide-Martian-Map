@@ -60,7 +60,6 @@ For each mission:
 5. **Astronaut exploration plan**: the lander zone and sites. A **route picker** lists every safest route of the mission. Tap one (or click a dashed blue line on the map) to highlight it, fade the others and zoom to it. Its card gives distance, walking time, rover time, climb, steepest grade and an elevation profile coloured by slope (green <8°, yellow 8–15°, red >15°). **All routes** shows them all again.
    - **☢ Radiation**: the dose for the walk there and back. It uses the 0.64 mSv/day galactic-cosmic-ray rate that Curiosity's RAD measured in Gale (Hassler et al. 2014).
    - **EVA budget** *(prediction)*: a bar with the walk out, the work on site and the walk back, with the ~8 h EVA limit marked. ✓ means the walk fits one EVA on foot, with the reserve shown. ✗ means it does not, and the card gives the pressurised-rover option. **Work on site** above the route list sets the work time (1–4 h, default 2 h). The route list shows ✓/✗ and the EVA total for every route.
-   - In Gale, the **★ boxwork science stop** (Curiosity, 2025) has its own route.
 
 ![Route card with radiation and EVA budget](img/10-route-radiation-eva.jpg)
 

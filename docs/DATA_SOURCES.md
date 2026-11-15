@@ -69,14 +69,6 @@ Every event and resource marker uses the rover's official position on the sol of
 | Observation Mountain (Jezero) | Regolith samples Atmo Mountain and Crosswind Lake, sols 634/639 | NASA sample table; Simon et al. 2025 *PNAS* |
 | Sulfur concrete | 50 % S + 50 % regolith, ≤ 1 mm, > 50 MPa | Wan, Wendner & Cusatis 2016, *Construction and Building Materials* |
 
-## Boxwork science stop
-
-| Item | Source |
-|---|---|
-| Boxwork ridges 1–2 m tall, groundwater origin, clay in ridge / carbonate in hollow | NASA/JPL, "NASA's Curiosity Mars Rover Starts Unpacking Boxwork Formations", 23 Jun 2025; NASA, "NASA's Curiosity Rover Sees Martian Spiderwebs Up Close", 23 Feb 2026 |
-| Position (Curiosity on sol 4563) | NASA/JPL MMGIS waypoints |
-| HiRISE image of the boxwork area (Curiosity view, Basic layer) | MRO HiRISE via JPL Mars Trek |
-
 ## Radiation
 
 | Value | Used for | Source |

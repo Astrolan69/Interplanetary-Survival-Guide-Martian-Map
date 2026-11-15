@@ -59,7 +59,7 @@ Each route card shows one EVA (extravehicular activity) as a bar: **walk out + w
 - ✓ means the walk fits in one EVA on foot, with the reserve shown. ✗ means it does not, and the card gives the pressurised-rover option instead (8 km/h each way, suit worn only on site).
 - The card also gives the cosmic-ray dose for the whole EVA on foot (see below).
 
-With the default 2 h of work, these routes fit one EVA on foot: Gediz Vallis (7 h 41 min), the sulfate unit, every Spirit route, and the Jezero delta and regolith routes. Bagnold dunes (8 h 45 min) and Ingenuity (11 h 28 min) need the rover.
+With the default 2 h of work, these routes fit one EVA on foot: Gediz Vallis (7 h 41 min), the sulfate unit, every Spirit route, and the Jezero regolith route. Bagnold dunes (8 h 45 min) and Ingenuity (11 h 28 min) need the rover.
 
 ## Radiation dose per route
 
@@ -77,11 +77,6 @@ With the default 2 h of work, these routes fit one EVA on foot: Gediz Vallis (7 
 - **Steep slopes**: the map marks in red only terrain steeper than **25°** (> 47 % grade; grade in % = tan(slope) × 100), outlined from the DEM slope grid (`tools/v10.py`), and only on the **Basic** layer. Walking routes stay stricter: they never enter cells steeper than 15° (27 %).
 - **Hazard zones** have a pink dashed outline with a very light fill, so the slope classes underneath keep their colors.
 - **Winter power** (Gusev) is the largest walkable north-facing slope near Home Plate (~11°, about 2 ha on the north flank of McCool Hill), found from slope and aspect on the 1 m DEM. This is how Spirit survived winters.
-- **Comms mast** (Gusev) is the Husband Hill summit, the highest point Spirit reached.
-
-## Boxwork science stop (Gale)
-
-A ★ science stop sits at Curiosity's position on sol 4563 (NASA/JPL MMGIS), inside the boxwork region that Curiosity explored from mid-2025. The boxwork is a network of mineral ridges 1–2 m tall with sandy hollows between them. Ancient groundwater hardened the ridges. Curiosity found clay minerals in a ridge sample and carbonates in a hollow sample (NASA/JPL, 23 Jun 2025 and 23 Feb 2026). The stop has its own least-time route from the crew lander (`tools/v13.py`, same rules as the other routes): 5.43 km, 4 h 3 min out and 3 h 9 min back, 450 m of climb, and it never crosses terrain steeper than 15°. The route passes about 0.5 km from the Gediz Vallis sulfur field. With 2 h of work the walk takes 9 h 12 min, which is longer than one 8 h EVA, so the plan is the pressurised rover (41 min each way).
 
 ## Verification of rover paths
 
