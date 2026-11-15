@@ -99,7 +99,7 @@ All maps, measurements and rover images are real NASA/USGS data, with sources in
 
 - Data: NASA/JPL-Caltech, University of Arizona (HiRISE), ASU (THEMIS), MSSS (CTX, Mastcam), USGS Astrogeology, ESA/DLR/FU Berlin (HRSC), Cornell (MER). NASA data is generally not copyrighted; see [DATA_SOURCES](docs/DATA_SOURCES.md).
 - Libraries: [Leaflet](https://leafletjs.com/) (BSD-2-Clause), [three.js](https://threejs.org/) (MIT).
-- "My predictions" (lander zones, routes, site ranking) are this project's own analysis, **not** NASA's.
+- "Our predictions" (lander zones, routes, site ranking) are this project's own analysis, **not** NASA's.
 
 ---
 

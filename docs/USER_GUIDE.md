@@ -77,4 +77,4 @@ This shows the latitude and longitude under the cursor, the elevation in meters 
 
 ## 6. Data sources
 
-The **Data sources** button opens the full list of datasets and the method. See also [DATA_SOURCES.md](DATA_SOURCES.md).
+The **Data sources** button opens the full list of datasets and the method, ending with the SI use (Super Intelligence) note. See also [DATA_SOURCES.md](DATA_SOURCES.md).

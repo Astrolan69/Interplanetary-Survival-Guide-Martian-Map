@@ -98,3 +98,9 @@ Every event and resource marker uses the rover's official position on the sol of
 ## Credits
 
 NASA/JPL-Caltech · University of Arizona (HiRISE) · Arizona State University (THEMIS) · Malin Space Science Systems (CTX, Mastcam, MAHLI) · USGS Astrogeology Science Center · ESA/DLR/FU Berlin (HRSC) · Cornell University (MER Pancam) · PDS Geosciences Node, Washington University in St. Louis.
+
+## SI use (Super Intelligence)
+
+Team Stellarch (Alan Mamzer, Beata Cabała, Michał Ziemiński) defined the mission concept (MAREK, sulfur concrete for the first base), chose the sites, resources and features, set the priorities, checked the results against NASA sources, tested the app and built the presentation. An SI coding assistant helped write the code and the data-processing scripts and drafted the documentation, under the team's direction and review.
+
+Every map, measurement and rover image in the app is real NASA/USGS data, with the sources listed above. The app contains no SI-generated images. The four concept renders in the presentation (lander, rover, helmet and forearm displays) are SI-generated and marked "SI GENERATED".

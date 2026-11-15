@@ -189,7 +189,7 @@ header .hb{white-space:nowrap}header nav button{white-space:nowrap}
     <label class="chk"><input type="checkbox" id="oSulf" checked><div><b style="color:#ffe14d">Resources</b><span>Pure sulfur, sulfates and regolith for sulfur concrete, where rovers actually measured them</span></div></label>
     <label class="chk"><input type="checkbox" id="oHist" checked><div><b>NASA mission route</b><span>Real rover paths, landing sites and key events</span></div></label>
     <label class="chk"><input type="checkbox" id="oGrid" checked><div><b>Lat / lon grid</b><span>Latitude &amp; longitude lines (planetocentric, °E)</span></div></label>
-    <label class="chk"><input type="checkbox" id="oPred" checked><div><b>Astronaut exploration plan</b><span>My proposed landing zone, sites and routes, computed from NASA data</span></div></label>
+    <label class="chk"><input type="checkbox" id="oPred" checked><div><b>Astronaut exploration plan</b><span>Our proposed landing zone, sites and routes, computed from NASA data</span></div></label>
   </div>
   <div class="sec">
     <h3>Map legend</h3>
@@ -250,7 +250,7 @@ header .hb{white-space:nowrap}header nav button{white-space:nowrap}
     <li><b>Positions</b>: each marker sits at the rover's official position on the sol the measurement was made (NASA/JPL MMGIS waypoints for Curiosity and Perseverance; PDS MER Analyst's Notebook for Spirit).</li>
     <li><b>Findings</b>: NASA/JPL releases (Curiosity pure sulfur, Gediz Vallis, 2024; sulfate-bearing unit, 2022; Bagnold dunes, 2016); Blake et al. 2013 (Rocknest); Lane et al. 2008, Ming et al. 2006, Johnson et al. 2007, Wang et al. 2008 (Spirit sulfate soils); Williams et al. LPSC 2023, Stack Morgan et al. GSA 2022, Hurowitz et al. Goldschmidt 2023, NASA sample table and Simon et al. 2025 PNAS (Perseverance sulfates and regolith).</li>
     <li><b>Sulfur concrete</b>: Wan, Wendner &amp; Cusatis 2016, <i>Construction and Building Materials</i>, "A novel material for in situ construction on Mars". Best mix: 50% sulfur + 50% regolith with grains ≤1 mm, &gt;50 MPa.</li>
-    <li><b>Site ranking</b> (Gale &gt; Jezero &gt; Gusev) is my own judgement from these data.</li>
+    <li><b>Site ranking</b> (Gale &gt; Jezero &gt; Gusev) is our own judgement from these data.</li>
   </ul>
   <h4>Radiation on each route</h4>
   <ul>
@@ -258,12 +258,18 @@ header .hb{white-space:nowrap}header nav button{white-space:nowrap}
     <li>The same rate is used at Gusev and Jezero (RAD only measured in Gale; both sites are higher, so the real dose there is probably slightly higher). A spacesuit adds almost no shielding against cosmic rays. Solar particle events are not included: a large one would add a short spike, and crews would shelter in the lander.</li>
     <li>For scale: NASA's career limit is 600 mSv effective dose (NASA-STD-3001 Vol. 1, <a href="https://www.nasa.gov/wp-content/uploads/2023/03/radiation-protection-technical-brief-ochmo.pdf" target="_blank">OCHMO technical brief</a>).</li>
   </ul>
-  <h4>My predictions (not NASA's)</h4>
+  <h4>Our predictions (not NASA's)</h4>
   <ul>
     <li><b>Crew lander zone</b>: the cell with the lowest score for 400 m mean slope (DEM) + HiRISE surface roughness (craters, boulders) + elevation (lower means more air for braking). It must also sit 1.2–9 km from the target, depending on the site, so the plume does not hit heritage or science sites.</li>
     <li><b>Routes</b>: least-time path on the DEM (Tobler walking model, suited speed ~3 km/h on flat ground), with grades above 12–15° blocked; routes never enter DEM cells steeper than 15° (the red no-go hatching) and keep 50 m outside hazard zones. Rover time assumes 8 km/h.</li>
     <li><b>EVA budget</b>: walk out (<code>walk_h</code>) + work on site (1–4 h, chosen in the route panel, default 2 h) + walk back on the same path (<code>back_h</code>, same speed model, so a downhill walk out becomes an uphill walk back). A route "fits" when the total is within one ~8 h EVA: NASA's exploration suit requirement is EVAs of up to 8 hours (xEMU, <a href="https://ntrs.nasa.gov/api/citations/20200001071/downloads/20200001071.pdf" target="_blank">NASA EVA-EXP-0075</a>; Mars EVA suit target "8-hour EVA", <a href="https://ntrs.nasa.gov/api/citations/20250006297/downloads/ICES-2025-61%20Roadmaps%20Presentation.pdf" target="_blank">NASA EVA technology roadmaps, ICES 2025</a>). If it does not fit, the card gives the pressurised-rover option (8 km/h), where the suit is only worn on site.</li>
     <li><b>Sites</b>: picked from what the missions actually found (sulfur, sulfates, silica, soft soil, hardware) plus DEM analysis (north-facing slopes, highest point).</li>
+  </ul>
+  <h4>SI use (Super Intelligence)</h4>
+  <ul>
+    <li><b>Team Stellarch</b> (Alan Mamzer, Beata Cabała, Michał Ziemiński) defined the mission concept (MAREK, sulfur concrete for the first base), chose the sites, resources and features, set the priorities, checked the results against NASA sources, tested the app and built the presentation.</li>
+    <li><b>An SI coding assistant</b> helped write the code and the data-processing scripts and drafted the documentation, under the team's direction and review.</li>
+    <li>Every map, measurement and rover image here is real NASA/USGS data with its source above. Predictions are marked <span class="pred">prediction</span>. The app contains no SI-generated images.</li>
   </ul>
 </div></div>
 
@@ -614,7 +620,7 @@ const S=[
  {pre:async()=>{await toMap();await view('overview')},t:()=>$('#nav'),h:'Pick a mission path',b:`<ul><li><b>Overview</b>: all three sites, distances, the sulfur ranking and my recommendation.</li><li><b>Curiosity</b>: Gale crater, pure sulfur at Gediz Vallis.</li><li><b>Spirit</b>: Gusev crater, sulfate soils, Home Plate.</li><li><b>Perseverance</b>: Jezero delta, Ingenuity.</li></ul><p>Each tab shows the rover's <b>real path</b>.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#base'),h:'Map layer',b:`<p>The same four layers, now at high resolution (HiRISE, 1–7 m/px) at each rover site. On <b>Basic</b>, red areas mark slopes steeper than 25°.</p><p><b>Ground</b> shows where the surface is soft dust (red), sand (amber), coarse sand or crust (light green) or rock (green), interpreted from MGS TES thermal inertia.</p><p>The <b>legend</b> under the buttons explains colors: <b>Elevation</b> = meters above the Mars datum, <b>Thermal Night IR</b> = bright rock / dark sand, <b>Geology</b> = unit and age.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#opa'),h:'Opacity',b:`<p>Fade the chosen layer to compare it with the image beneath, e.g. elevation over terrain.</p>`},
- {pre:async()=>{await toMap();await view('curiosity')},t:()=>secOf('#oSulf'),h:'Overlays: turn information on and off',b:`<ul><li><b style="color:#ffe14d">Resources</b>: where rovers measured sulfur, sulfates and regolith.</li><li><b>NASA mission route</b>: real path, landing site, numbered events, rover-eye photos (white dots).</li><li><b>Lat / lon grid</b>: coordinates in °E.</li><li><b>Astronaut exploration plan</b>: my proposed lander, sites and safe routes.</li></ul>`},
+ {pre:async()=>{await toMap();await view('curiosity')},t:()=>secOf('#oSulf'),h:'Overlays: turn information on and off',b:`<ul><li><b style="color:#ffe14d">Resources</b>: where rovers measured sulfur, sulfates and regolith.</li><li><b>NASA mission route</b>: real path, landing site, numbered events, rover-eye photos (white dots).</li><li><b>Lat / lon grid</b>: coordinates in °E.</li><li><b>Astronaut exploration plan</b>: our proposed lander, sites and safe routes.</li></ul>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>{const k=[...document.querySelectorAll('#left .sec h3')].find(h=>/Map (key|legend)/i.test(h.textContent));return k?k.closest('.sec'):null},h:'Map legend',b:`<ul><li><span class="ico-in" style="background:#ffe14d;color:#3a2d00">S</span><b>pure sulfur</b>: binder, melt and mix</li><li><span class="ico-in" style="background:#ff8c1a;color:#2a1400;font-size:7px">SO₄</span><b>sulfates</b>: sulfur ore</li><li><span class="ico-in" style="background:#c79a6b;color:#2a1a0a">▦</span><b>martian regolith</b></li><li><b>▼</b> location crew lander (300 m zone), <b>💧</b> resources, <b style="color:#ff5a5a">!</b> hazard, <b style="color:#ff4fd8">pink dashed outline</b>: hazard zone (soft soil, sand, steep flanks), <b style="color:#ff2d2d">red areas</b>: slopes steeper than 25° (&gt; 47 %), shown on the Basic layer</li><li><b style="color:#ff9a62">orange line</b>: rover path (NASA mission), <b style="color:#5fd6e8">dashed blue</b>: safest route</li></ul>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#map'),h:'Click anything on the map',b:`<p>Every marker opens a card: what was found, on which <b>sol</b> (Mars day), exact coordinates, and the source. Numbered pins are mission events; white dots are real rover photos.</p><p>Drag to pan, scroll or <b>+ / −</b> to zoom.</p>`},
  {pre:async()=>{await toMap();await view('curiosity')},t:()=>$('#readout'),h:'Live readout',b:`<p>Under the cursor: <b>latitude/longitude</b>, <b>elevation</b> in meters and <b>slope</b> (green &lt; 8°, yellow 8–15°, red &gt; 15°: too steep on foot). With Geology on, also the geologic unit.</p>`},
