@@ -29,6 +29,7 @@ Large binary data was moved out of the browser as gzip + base64 chunks and reass
 | `geol.py`, `geol2.py` | Rasterise the USGS SIM 3292 polygons (even-odd fill for holes, nearest-neighbour gap fill) into colored layers and unit-index rasters. |
 | `v8.py`, `v9.py` | Current routing: slope-limited (15°) least-time routes, hazard outlines (`hazards.json`). |
 | `v13.py` | Return time for every route (`back_h`: the same path walked from target to lander, same speed model) and the Gale boxwork science stop with its route. Run from the repo root. |
+| `v14.py` | Removes the separate "resources (water)" marker type: the Gediz Vallis site becomes pure sulfur (S), the Gusev soils sulfate (SO₄) and the Jezero delta a science stop (★). |
 
 ## 3. Processing notes
 
